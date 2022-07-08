@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "school_customize",
+    'name': "Alhamd School Project",
 
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+    'summary': """DSM School customization for Alhum Schhol""",
 
     'description': """
-        Long description of module's purpose
     """,
 
     'author': "My Company",
@@ -20,13 +17,16 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','school'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/student.xml',
+        'views/parent.xml',
+        'views/admission_registrater.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

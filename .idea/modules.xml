@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/odoo/15odoo/.idea/15odoo.iml" filepath="$USER_HOME$/odoo/15odoo/.idea/15odoo.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/school_managment.iml" filepath="$PROJECT_DIR$/.idea/school_managment.iml" />
     </modules>
   </component>
