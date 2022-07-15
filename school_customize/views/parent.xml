@@ -16,10 +16,8 @@
                         <field name="office_address" />
                         <field name="alive" />
                 </group>
-
-
             </xpath>
-
         </field>
     </record>
+
 </odoo>

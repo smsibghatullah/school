@@ -13,7 +13,16 @@
                 <field name="attachment_id" />
                 <field name="board_id" />
             </xpath>
+             <xpath expr="//field[@name='parent_id']" position="replace">
+                 <field name="parent_id"
+                                        attrs="{'readonly':[('state','in',['alumni','terminate'])]}"
+                                        context="{'form_view_ref':'school.view_parent_form','default_parent_school':1}"
+                                        options="{&quot;no_open&quot;: True, &quot;no_create&quot;: False}">
+
+                </field>
+            </xpath>
 
         </field>
     </record>
+
 </odoo>
