@@ -22,4 +22,27 @@
 
         </field>
     </record>
+
+    <record id="view_student_payslip_line_tree" model="ir.ui.view">
+        <field name="name">student.payslip.line.tree</field>
+        <field name="inherit_id" ref="school_fees.view_student_payslip_line_tree" />
+        <field name="model">student.payslip.line</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='code']" position="after">
+                <field name="date"/>
+            </xpath>
+        </field>
+    </record>
+
+        <record id="student_template_customizations_form" model="ir.ui.view">
+        <field name="name">student.payslip.form</field>
+        <field name="inherit_id" ref="school_fees.view_student_payslip_form" />
+        <field name="model">student.payslip</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="payslip_cancel" class="fa fa-check" string="Cancel" states="draft,confirm,pending" type="object" groups="school.group_school_administration"/>
+                <button name="payslip_payment" class="fa fa-check" string="Payment Fee" states="confirm,pending" type="object" groups="school.group_school_administration"/>
+            </xpath>
+        </field>
+        </record>
 </odoo>

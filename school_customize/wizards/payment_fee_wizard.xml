@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- Assign Roll Number Wizard Form View  -->
+    <record id="view_payment_fee_wizard_form" model="ir.ui.view">
+        <field name="name">payment.fee.wizard.form</field>
+        <field name="model">payment.fee.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Fee Payment">
+                    <group>
+                        <field name="description" readonly="1"/>
+<!--                        <field name="student_payslip_id" readonly="1"/>-->
+                        <field name="amount_due" readonly="1"/>
+<!--                        <field name="company_id" />-->
+                        <field name="date" />
+                        <field name="journal_id" />
+                        <field name="amount_paid"/>
+                        <field name="memo"/>
+                    </group>
+                    <footer>
+                        <button class="btn" special="cancel" string="Close"/>
+                        <button class="btn btn-primary" name="pay" string="Pay" type="object"/>
+                    </footer>
+           </form>
+        </field>
+    </record>
+</odoo>

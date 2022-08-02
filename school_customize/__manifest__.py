@@ -17,7 +17,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','school'],
+    'depends': ['base', 'school', 'school_fees'],
 
     # always loaded
     'data': [
@@ -26,7 +26,8 @@
         'views/templates.xml',
         'views/student.xml',
         'views/parent.xml',
-        'views/admission_registrater.xml'
+        'views/admission_registrater.xml',
+        'wizards/payment_fee_wizard.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -198,7 +198,7 @@ class StudentPayslip(models.Model):
     line_ids = fields.One2many("student.payslip.line", "slip_id",
         "PaySlip Line", copy=False, help="Payslips")
     total = fields.Monetary("Total", readonly=True, help="Total Amount")
-    state = fields.Selection([("draft", "Draft"), ("confirm", "Confirm"),
+    state = fields.Selection([("cancel", "Cancel"),("draft", "Draft"), ("confirm", "Confirm"),
         ("pending", "Pending"), ("paid", "Paid")], "State",
         readonly=True, default="draft", help="State of the student payslip")
     journal_id = fields.Many2one("account.journal", "Journal", required=False,
