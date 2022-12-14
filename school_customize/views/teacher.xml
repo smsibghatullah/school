@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+  <record id="cusotmaize_view_school_teacher_tree" model="ir.ui.view">
+            <field name="name">cusotmaize.school.teacher.tree</field>
+           <field name="inherit_id" ref="school.view_school_teacher_tree" />
+            <field name="model">school.teacher</field>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='phone_numbers']" position="after">
+                       <field name="nic"/>
+                 </xpath>
+
+            </field>
+        </record>
+
+
+      <record id="customize_view_school_teacher_form" model="ir.ui.view">
+            <field name="name">customize.school.teacher.form</field>
+            <field name="inherit_id" ref="school.view_school_teacher_form" />
+            <field name="model">school.teacher</field>
+            <field name="arch" type="xml">
+                 <xpath expr="//page[@name='public']/group/group//field[@name='phone_numbers']" position="after">
+                       <field name="nic" required="1"/>
+                 </xpath>
+            </field>
+      </record>
+
+
+
+     <record id="customize_view_school_teacher_search" model="ir.ui.view">
+            <field name="name">cutomize.school.teacher.search</field>
+         <field name="inherit_id" ref="school.view_school_teacher_search" />
+            <field name="model">school.teacher</field>
+            <field name="arch" type="xml">
+                <search string="Employees">
+
+                    <field name="nic" filter_domain="[('nic','ilike',self)]"/>
+
+
+                </search>
+            </field>
+     </record>
+
+
+</odoo>
+

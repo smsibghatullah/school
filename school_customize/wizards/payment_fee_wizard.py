@@ -1,6 +1,6 @@
 # See LICENSE file for full copyright and licensing details.
 
-from odoo import models, fields, _
+from odoo import models, fields, api
 
 
 class PaymentFeeWizard(models.TransientModel):
@@ -20,8 +20,25 @@ class PaymentFeeWizard(models.TransientModel):
     journal_id = fields.Many2one('account.journal',
         domain="[('type', 'in', ('bank', 'cash'))]")
 
+    remaning_amount = fields.Float( "Remaning Amount")
+
+    @api.onchange("amount_paid")
+    def on_change_student(self):
+        self.remaning_amount = self.amount_due - self.amount_paid
+
+    # def _remaning_amount(self):
+    #     self.remaning_amount = self.amount_due - self.amount_paid
     def _compute_from_lines(self):
         self.company_id = self.env.company
+
+    def pay_api(self, data=None):
+        print(data)
+        student_payslip_id = self.env['student.payslip'].search([('id', '=', int(data['student_payslip_id']))])
+        res = self.create({'student_payslip_id': student_payslip_id.id, 'date': data['date'], 'memo': data['memo'],
+                           'amount_paid': data['amount_paid'], 'amount_due': data['amount_due'],
+                           'journal_id': data['journal_id']})
+        res.pay()
+        return 'paid'
 
     def pay(self):
         """Generate invoice of student fee"""

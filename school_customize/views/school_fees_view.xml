@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="customization_view_student_payslip_form" model="ir.ui.view">
+        <field name="name">customization.student.payslip.form</field>
+     <field name="inherit_id" ref="school_fees.view_student_payslip_form" />
+        <field name="model">student.payslip</field>
+        <field name="arch" type="xml">
+
+                <xpath expr="//form//header//button[@name='student_pay_fees']" position="attributes">
+                       <attribute name="invisible">True</attribute>
+                </xpath>
+
+        </field>
+</record>
+
+
+
+
+
+</odoo>

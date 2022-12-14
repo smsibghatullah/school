@@ -1,7 +1,10 @@
 from odoo import models, fields, api
 
 
+
+
 class ParentCustomize(models.Model):
+
     _inherit = 'school.parent'
 
     nic = fields.Char(string='NIC')
@@ -12,3 +15,4 @@ class ParentCustomize(models.Model):
     office_phone = fields.Char(string='Office Phone')
     office_address = fields.Char(string='Office Address')
     alive = fields.Boolean(string='alive')
+

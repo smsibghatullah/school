@@ -1,5 +1,12 @@
 <odoo>
-  <data>
+      <data noupdate="1">
+        <record id="partial_payment_1" model="product.product">
+            <field name="name">PartialPayment</field>
+            <field name="code">PartialPayment</field>
+            <field name="detailed_type">service</field>
+            <field name="list_price">0.00</field>
+            <field name="categ_id" ref="school_fees.product_categ_fees"/>
+        </record>
     <!-- explicit list view definition -->
 <!--
     <record model="ir.ui.view" id="school_customize.list">

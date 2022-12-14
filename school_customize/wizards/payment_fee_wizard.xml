@@ -13,9 +13,10 @@
 <!--                        <field name="student_payslip_id" readonly="1"/>-->
                         <field name="amount_due" readonly="1"/>
 <!--                        <field name="company_id" />-->
+                        <field name="amount_paid"/>
+                        <field name="remaning_amount" readonly="1" />
                         <field name="date" />
                         <field name="journal_id" />
-                        <field name="amount_paid"/>
                         <field name="memo"/>
                     </group>
                     <footer>

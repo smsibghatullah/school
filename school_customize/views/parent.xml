@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//group[@name='communication']" position="after">
                 <group string="General Information" name="parent_general_info">
-                        <field name="nic" />
+                        <field name="nic" required="1"/>
                         <field name="qualification" />
                         <field name="marital_status" />
                         <field name="occupation" />
@@ -19,5 +19,34 @@
             </xpath>
         </field>
     </record>
+
+
+
+      <record id="view_school_parent_customizations_tree" model="ir.ui.view">
+            <field name="name">school.parent.customizations.tree</field>
+            <field name="inherit_id" ref="school.view_school_parent_tree" />
+            <field name="model">school.parent</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="after">
+                     <field name="nic"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+    <record id="customize_view_school_parent_search" model="ir.ui.view">
+            <field name="name">customize_school.parent.search</field>
+            <field name="model">school.parent</field>
+            <field name="arch" type="xml">
+                <search string="Search Parent">
+                   <field name="name" filter_domain="['|','|',('name','ilike',self),('ref','=',self),('email','ilike',self)]"/>
+                   <field name="phone" filter_domain="[('phone','ilike',self)]"/>
+                    <field name="nic" filter_domain="[('nic','ilike',self)]"/>
+                    <separator/>
+                   <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+               </search>
+            </field>
+        </record>
 
 </odoo>

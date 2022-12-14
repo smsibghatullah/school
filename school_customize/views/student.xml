@@ -2,22 +2,22 @@
 <odoo>
     <record id="student_template_customizations_form" model="ir.ui.view">
         <field name="name">Launch Date in product.template form</field>
-        <field name="inherit_id" ref="school.view_student_student_form_1" />
+        <field name="inherit_id" ref="school.view_student_student_form_1"/>
         <field name="model">student.student</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='admission_date']" position="after">
-                <field name="joining_date" />
-                <field name="category_id" />
-                <field name="section_id" />
-                <field name="board_id" />
+                <field name="joining_date"/>
+                <field name="category_id"/>
+                <field name="section_id"/>
+                <field name="board_id"/>
                 <field name="attachment_id" widget="many2many"/>
-                <field name="board_id" />
+                <field name="board_id"/>
             </xpath>
-             <xpath expr="//field[@name='parent_id']" position="replace">
-                 <field name="parent_id"
-                                        attrs="{'readonly':[('state','in',['alumni','terminate'])]}"
-                                        context="{'form_view_ref':'school.view_parent_form','default_parent_school':1}"
-                                        options="{&quot;no_open&quot;: True, &quot;no_create&quot;: False}"/>
+            <xpath expr="//field[@name='parent_id']" position="replace">
+                <field name="parent_id"
+                       attrs="{'readonly':[('state','in',['alumni','terminate'])]}"
+                       context="{'form_view_ref':'school.view_parent_form','default_parent_school':1}"
+                       options="{&quot;no_open&quot;: True, &quot;no_create&quot;: False}"/>
             </xpath>
 
         </field>
@@ -25,7 +25,7 @@
 
     <record id="view_student_payslip_line_tree" model="ir.ui.view">
         <field name="name">student.payslip.line.tree</field>
-        <field name="inherit_id" ref="school_fees.view_student_payslip_line_tree" />
+        <field name="inherit_id" ref="school_fees.view_student_payslip_line_tree"/>
         <field name="model">student.payslip.line</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='code']" position="after">
@@ -34,15 +34,188 @@
         </field>
     </record>
 
-        <record id="student_template_customizations_form" model="ir.ui.view">
+    <record id="student_template_customizations_form" model="ir.ui.view">
         <field name="name">student.payslip.form</field>
-        <field name="inherit_id" ref="school_fees.view_student_payslip_form" />
+        <field name="inherit_id" ref="school_fees.view_student_payslip_form"/>
         <field name="model">student.payslip</field>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="payslip_cancel" class="fa fa-check" string="Cancel" states="draft,confirm,pending" type="object" groups="school.group_school_administration"/>
-                <button name="payslip_payment" class="fa fa-check" string="Payment Fee" states="confirm,pending" type="object" groups="school.group_school_administration"/>
+                <button name="payslip_cancel" class="fa fa-check" string="Cancel" states="draft,confirm,pending"
+                        type="object" groups="school.group_school_administration"/>
+                <button name="payslip_payment" class="fa fa-check" string="Payment Fee" states="confirm,pending"
+                        type="object" groups="school.group_school_administration"/>
             </xpath>
         </field>
-        </record>
+    </record>
+
+
+    <record id="cutomize_view_student_student_form_1" model="ir.ui.view">
+        <field name="name">student.student.form.1</field>
+        <field name="inherit_id" ref="school.view_student_student_form_1"/>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook/page[@name='general']" position="after">
+                <page string="Fees">
+
+                    <field name="fees_heads_structure_line" nolabel="1" colspan="4">
+                        <tree string="Fees Structure" editable="top">
+                            <field name="sequence"/>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="type"/>
+                            <field name="account_id"/>
+                            <field name="discount"/>
+                            <field name="amount"/>
+                        </tree>
+                    </field>
+
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!--    <record id="cutomize_view_student_fees_structure_line_tree" model="ir.ui.view">-->
+    <!--        <field name="name">cutomize.student.fees.structure.line.tree</field>-->
+    <!--        <field name="inherit_id" ref="school_fees.view_student_fees_structure_line_tree"/>-->
+    <!--        <field name="model">student.fees.structure.line</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//tree//field[@name='account_id']" position="after">-->
+    <!--                <field name="discount"/>-->
+    <!--            </xpath>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <!--    <record id="customize_view_student_fees_structure_line_form" model="ir.ui.view">-->
+    <!--        <field name="name">customize.student.fees.structure.line.form</field>-->
+    <!--        <field name="inherit_id" ref="school_fees.view_student_fees_structure_line_form"/>-->
+    <!--        <field name="model">student.fees.structure.line</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//form/group/field[@name='amount']" position="after">-->
+    <!--                <field name="discount"/>-->
+    <!--            </xpath>-->
+
+    <!--        </field>-->
+    <!--    </record>-->
+
+
+    <record id="customize_view_student_payslip_form" model="ir.ui.view">
+        <field name="name">customize.student.payslip.form</field>
+        <field name="inherit_id" ref="school_fees.view_student_payslip_form"/>
+        <field name="model">student.payslip</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form/sheet" position="replace">
+
+
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="invoice_view" string="Invoice" icon="fa-pencil-square-o" widget="stateinfo"
+                                class="oe_stat_button"
+                                states="pending,paid" type="object" groups="school.group_school_administration"/>
+                    </div>
+                    <h2>
+                        <field name="student_id" placeholder="Student Name" colspan="4"
+                               attrs="{'readonly':[('state','not in','draft')]}"
+                               domain="[('state','=','done')]" options="{&quot;no_create&quot;: True}"/>
+                    </h2>
+                    <group>
+                        <group col="2" string="Information">
+                            <field name="name" placeholder="Description" required="1"
+                                   attrs="{'readonly':[('state','not in','draft')]}"/>
+                            <field name="number" readonly="1"
+                                   attrs="{'invisible': [('state', 'not in', ('pending', 'paid'))]}"/>
+                            <field name="date" attrs="{'readonly':[('state','not in','draft')]}"/>
+                        </group>
+                        <group col="2" string="Standard Information">
+                            <field name="standard_id" placeholder="Standard" widget="selection"
+                                   attrs="{'readonly':[('state','not in','draft')]}" readonly="1"/>
+                            <field name="division_id" placeholder="Division" widget="selection"
+                                   attrs="{'readonly':[('state','not in','draft')]}" readonly="1"/>
+                            <field name="medium_id" placeholder="Medium" widget="selection"
+                                   attrs="{'readonly':[('state','not in','draft')]}" readonly="1"/>
+                        </group>
+                    </group>
+                    <group col="4">
+                        <separator string="Fees Structure" colspan="4"/>
+                        <field name="fees_structure_id" required="1" placeholder="Fee Structure"
+                               attrs="{'readonly':[('state','not in','draft')]}"
+                               options="{&quot;no_create&quot;: True}"/>
+                        <field name="journal_id" widget="selection" placeholder="Journal" domain="[('type','=','sale')]"
+                               attrs="{'readonly':[('state','not in','draft')]}"/>
+                        <notebook colspan="4">
+                            <page string="Fee Structure">
+<!--                                <field name="line_ids" colspan="4" nolabel="1" readonly="1"/>-->
+
+                                 <field name="line_ids">
+                                    <tree string="Fees Structure" editable="top">
+                                        <field name="name"/>
+                                        <field name="code"/>
+                                        <field name="date"/>
+                                        <field name="type"/>
+                                        <field name="account_id"/>
+                                        <field name="discount_amount"/>
+                                        <field name="amount"/>
+                                    </tree>
+                                </field>
+
+
+
+                                <separator string="" colspan="4"/>
+                                <group class="oe_subtotal_footer oe_right" colspan="2">
+                                    <field name="total"/>
+                                    <field name="discount" />
+                                    <field name="final_amount" />
+                                    <field name="paid_amount" readonly="1"/>
+                                    <field name="due_amount" readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Other Information">
+                                <group col="4" colspan="4">
+                                    <field name="type" placeholder="Type"
+                                           attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="currency_id" placeholder="Currency"
+                                           attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="currency_symbol" invisible="0"/>
+                                    <field name="move_id" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="payment_date" placeholder="Payment Date"
+                                           attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="company_id" string="School" placeholder="School Name"
+                                           attrs="{'readonly':[('state','not in','draft')]}"
+                                           options="{&quot;no_create&quot;: True}"/>
+                                </group>
+                            </page>
+
+                            <page id="payslip_structure_line" string="Payslip Structure Line">
+
+                                <field name="payslip_structure_line">
+                                    <tree string="Fees Structure" editable="top">
+                                        <field name="sequence"/>
+                                        <field name="name"/>
+                                        <field name="code"/>
+                                        <field name="type"/>
+                                        <field name="account_id"/>
+                                        <field name="discount"/>
+                                        <field name="amount"/>
+                                    </tree>
+                                </field>
+
+
+                            </page>
+
+
+                        </notebook>
+                    </group>
+                </sheet>
+
+
+                <!--                 <field name="amount"/>-->
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            </xpath>
+
+
+        </field>
+    </record>
+
 </odoo>
