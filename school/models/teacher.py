@@ -61,7 +61,7 @@ class SchoolTeacher(models.Model):
                      }
         ctx_vals = {'teacher_create': True,
                     'school_id': teacher_id.school_id.company_id.id}
-        user_rec = user_obj.with_context(ctx_vals).create(user_vals)
+        user_rec = user_obj.with_context(ctx_vals).sudo().create(user_vals)
         teacher_id.employee_id.write({'user_id': user_rec.id})
 #        if vals.get('is_parent'):
 #            self.parent_crt(teacher_id)

@@ -50,7 +50,7 @@ class SchoolParent(models.Model):
         res = super(SchoolParent, self).create(vals)
         parent_grp_id = self.env.ref('school.group_school_parent')
         emp_grp = self.env.ref('base.group_user')
-        self.env['res.users'].create({
+        self.env['res.users'].sudo().create({
                 'name': res.name,
                 'login': res.email,
                 'email': res.email,

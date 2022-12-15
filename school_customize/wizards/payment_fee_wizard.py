@@ -37,11 +37,13 @@ class PaymentFeeWizard(models.TransientModel):
         res = self.create({'student_payslip_id': student_payslip_id.id, 'date': data['date'], 'memo': data['memo'],
                            'amount_paid': data['amount_paid'], 'amount_due': data['amount_due'],
                            'journal_id': data['journal_id']})
+
         res.pay()
         return 'paid'
 
     def pay(self):
         """Generate invoice of student fee"""
+
         sequence_obj = self.env["ir.sequence"]
         for item in self:
             rec = item.student_payslip_id
