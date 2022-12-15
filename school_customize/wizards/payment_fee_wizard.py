@@ -23,8 +23,17 @@ class PaymentFeeWizard(models.TransientModel):
     def _compute_from_lines(self):
         self.company_id = self.env.company
 
+    def pay_api(self, data=None):
+        print(data)
+        student_payslip_id  = self.env['student.payslip'].search([('id','=', int(data['student_payslip_id']))])
+        res = self.create({'student_payslip_id': student_payslip_id.id, 'date': data['date'], 'memo': data['memo'],
+                     'amount_paid': data['amount_paid'], 'amount_due': data['amount_due'], 'journal_id': data['journal_id']})
+        res.pay()
+        return 'paid'
+
     def pay(self):
         """Generate invoice of student fee"""
+
         sequence_obj = self.env["ir.sequence"]
         for item in self:
             rec = item.student_payslip_id

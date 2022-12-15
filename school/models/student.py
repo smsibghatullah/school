@@ -230,11 +230,11 @@ class StudentStudent(models.Model):
         if res.state == 'draft':
             admission_group = self.env.ref('school.group_is_admission')
             new_grp_list = [admission_group.id, emp_grp.id]
-            res.user_id.write({'groups_id': [(6, 0, new_grp_list)]})
+            res.user_id.sudo().write({'groups_id': [(6, 0, new_grp_list)]})
         elif res.state == 'done':
             done_student = self.env.ref('school.group_school_student')
             group_list = [done_student.id, emp_grp.id]
-            res.user_id.write({'groups_id': [(6, 0, group_list)]})
+            res.user_id.sudo().write({'groups_id': [(6, 0, group_list)]})
         return res
 
     def write(self, vals):
