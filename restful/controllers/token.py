@@ -18,7 +18,7 @@ class AccessToken(http.Controller):
 
         self._token = request.env["api.access_token"]
 
-    @http.route("/api1/auth/token", methods=["POST"], type="http", auth="public", csrf=False)
+    @http.route("/api1/auth/token", methods=["POST"], type="json", auth="public", csrf=False)
     def token(self, **post):
         """The token URL to be used for getting the access_token:
 
@@ -93,7 +93,21 @@ class AccessToken(http.Controller):
         # Generate tokens
         access_token = _token.find_one_or_create_token(user_id=uid, create=True)
         # Successful response:
-        return werkzeug.wrappers.Response(
+        return {
+                    "uid": uid,
+                    # "user_context": request.session.get_context() if uid else {},
+                    # "company_id": request.env.user.company_id.id if uid else None,
+                    # "company_ids": request.env.user.company_ids.ids if uid else None,
+                    "partner_id": request.env.user.partner_id.id,
+                    "access_token": access_token,
+                    # "company_name": request.env.user.company_name,
+                    # "currency": request.env.user.currency_id.name,
+                    # "company_name": request.env.user.company_name,
+                    # "country": request.env.user.country_id.name,
+                    # "contact_address": request.env.user.contact_address,
+                    # "customer_rank": request.env.user.customer_rank,
+                }
+        werkzeug.wrappers.Response(
             status=200,
             content_type="application/json; charset=utf-8",
             headers=[("Cache-Control", "no-store"), ("Pragma", "no-cache")],
