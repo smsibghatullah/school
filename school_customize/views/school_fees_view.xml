@@ -15,6 +15,19 @@
 </record>
 
 
+      <record id="customization_view_student_fees_structure_form" model="ir.ui.view">
+        <field name="name">customization.student.fees.structure.form</field>
+           <field name="inherit_id" ref="school_fees.view_student_fees_structure_form" />
+        <field name="model">student.fees.structure</field>
+          <field name="arch" type="xml">
+              <xpath expr="//form/sheet/group/field[@name='code']" position="after">
+                     <field name="class_id" placeholder="Class"/>
+              </xpath>
+          </field>
+      </record>
+
+
+
 
 
 
