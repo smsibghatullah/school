@@ -29,6 +29,7 @@
         'views/teacher.xml',
         'views/school_fees_view.xml',
         'views/admission_registrater.xml',
+        'views/student_payslip.xml',
         'data/cron.xml',
         'wizards/payment_fee_wizard.xml'
     ],

@@ -1,129 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
 
 <odoo>
+<!--    <template id="student_payslip">-->
+<!--        <t t-call="web.html_container">-->
+<!--            <t t-foreach="docs" t-as="o">-->
+<!--                <t t-call="web.external_layout">-->
+<!--                    <div class="page">-->
+
+<!--                        <div id="qrcode" style="width:100%">-->
+<!--                            <table style="border-collapse:separate;-->
+<!--    border:solid black 1px;-->
+<!--    border-radius:6px; width:100%">-->
+<!--                                <tr><td><table><tr><td>School Account Office</td></tr>-->
+<!--                                <tr><td>Mode Of Payment Cash</td></tr>-->
+<!--                                <tr><td>Branch: Branch One</td></tr></table>  </td>-->
+<!--                                <td><table><tr><td><img class="border border-dark rounded" /></td></tr></table></td></tr>-->
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                        <div class="oe_structure"/>-->
+<!--                        <div class="row" align="center">-->
+<!--                            <span>-->
+<!--                                <h1>Student PaySlip </h1>-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                        <div class="row" align="center" style="font-family: 'Helvetica';font-size: 20px;">-->
+<!--                            <span>-->
+<!--                                <b t-field="o.name"></b>-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                        <div class="row" align="center" style="font-family: 'Helvetica';font-size: 20px;">-->
+<!--                            <span>For the month of </span>-->
+<!--                            <span t-esc="get_month(o.date)"></span>-->
+<!--                        </div>-->
+<!--                        <br />-->
+<!--                        <br />-->
+<!--                        <table width="100%">-->
+<!--                            <tr>-->
+<!--                                <td width="15%" style="font-family: 'Helvetica';font-size: 18px;">-->
+<!--                                    <b>Number</b>-->
+<!--                                </td>-->
+<!--                                <td width="5%">-->
+<!--                                    <b>:</b>-->
+<!--                                </td>-->
+<!--                                <td width="80%" style="font-family: 'Helvetica';font-size: 16px;">-->
+<!--                                    <span t-field="o.number"></span>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td width="15%" style="font-family: 'Helvetica';font-size: 18px;">-->
+<!--                                    <b>Date</b>-->
+<!--                                </td>-->
+<!--                                <td width="5%">-->
+<!--                                    <b>:</b>-->
+<!--                                </td>-->
+<!--                                <td width="80%" style="font-family: 'Helvetica';font-size: 16px;">-->
+<!--                                    <span t-esc="time.strftime('%Y-%m-%d')"></span>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </table>-->
+<!--                        <div class="row" align="center" style="font-family: 'Helvetica';font-size: 18px;">-->
+<!--                            <span>-->
+<!--                                <b>PaySlip of </b>-->
+<!--                                <b t-field="o.sudo().student_id.name"></b>-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                        <br />-->
+<!--                        <table width="100%" class="table table-striped">-->
+<!--                            <thead>-->
+<!--                                <tr>-->
+<!--                                    <td width="5%" style="font-family: 'Helvetica';font-size: 18px;" align="center">-->
+<!--                                        <b>#</b>-->
+<!--                                    </td>-->
+<!--                                    <td width="50%" align="left" style="font-family: 'Helvetica';font-size: 18px;">-->
+<!--                                        <b>Fees Structure</b>-->
+<!--                                    </td>-->
+<!--                                    <td align="right" width="45%" style="font-family: 'Helvetica';font-size: 18px;">-->
+<!--                                        <b>Total</b>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                                <t t-set="counter" t-value="0"/>-->
+<!--                                <t t-foreach="o.line_ids" t-as="l">-->
+<!--                                    <t t-set="counter" t-value="counter+1"/>-->
+<!--                                    <tr>-->
+<!--                                        <td>-->
+<!--                                            <span><t t-esc="counter"></t></span>-->
+<!--                                        </td>-->
+<!--                                        <td width="5%" align="center" style="font-family: 'Helvetica';font-size: 16px;">-->
+<!--                                        </td>-->
+<!--                                        <td width="50%" align="left" style="font-family: 'Helvetica';font-size: 16px;">-->
+<!--                                            <span t-field="l.name"></span>-->
+<!--                                        </td>-->
+<!--                                        <td align="right" width="45%" style="font-family: 'Helvetica';font-size: 16px;">-->
+<!--                                            <span t-field="l.amount" t-options='{"widget": "monetary","display_currency": l.company_id.currency_id}'></span>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                </t>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-4 pull-right">-->
+<!--                                <table class="table table-condensed">-->
+<!--                                    <tr>-->
+<!--                                        <td><strong>Total Fees</strong></td>-->
+<!--                                        <td class="text-right">-->
+<!--                                            <span t-field="o.total"-->
+<!--                                                t-options='{"widget": "monetary","display_currency": o.currency_id}'/>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td><strong>Amount Paid</strong></td>-->
+<!--                                        <td class="text-right">-->
+<!--                                            <span t-field="o.paid_amount"-->
+<!--                                                />-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="border-black">-->
+<!--                                        <td><strong>Due Amount</strong></td>-->
+<!--                                        <td class="text-right">-->
+<!--                                            <span t-field="o.due_amount"/>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-4 pull-right">-->
+<!--                            <br/><br/><br/><br/><br/><br/><br/>-->
+<!--                            <b>Principal,</b>-->
+<!--                            <br/><br/><br/>-->
+<!--                            <span style="font-family: 'Helvetica';font-size: 16px;">Authorized Signature</span>-->
+<!--                            <br />-->
+<!--                       </div>-->
+<!--                    </div>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+<!--</odoo>-->
+
+<!--<!DOCTYPE html>-->
+
+<!--<odoo>-->
     <template id="student_payslip">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
-                    <div class="page">
-                        <div class="oe_structure"/>
-                        <div class="row" align="center">
-                            <span>
-                                <h1>Student PaySlip</h1>
-                            </span>
-                        </div>
-                        <div class="row" align="center" style="font-family: 'Helvetica';font-size: 20px;">
-                            <span>
-                                <b t-field="o.name"></b>
-                            </span>
-                        </div>
-                        <div class="row" align="center" style="font-family: 'Helvetica';font-size: 20px;">
-                            <span>For the month of </span>
-                            <span t-esc="get_month(o.date)"></span>
-                        </div>
-                        <br />
-                        <br />
-                        <table width="100%">
-                            <tr>
-                                <td width="15%" style="font-family: 'Helvetica';font-size: 18px;">
-                                    <b>Number</b>
-                                </td>
-                                <td width="5%">
-                                    <b>:</b>
-                                </td>
-                                <td width="80%" style="font-family: 'Helvetica';font-size: 16px;">
-                                    <span t-field="o.number"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="15%" style="font-family: 'Helvetica';font-size: 18px;">
-                                    <b>Date</b>
-                                </td>
-                                <td width="5%">
-                                    <b>:</b>
-                                </td>
-                                <td width="80%" style="font-family: 'Helvetica';font-size: 16px;">
-                                    <span t-esc="time.strftime('%Y-%m-%d')"></span>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="row" align="center" style="font-family: 'Helvetica';font-size: 18px;">
-                            <span>
-                                <b>PaySlip of </b>
-                                <b t-field="o.sudo().student_id.name"></b>
-                            </span>
-                        </div>
-                        <br />
-                        <table width="100%" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <td width="5%" style="font-family: 'Helvetica';font-size: 18px;" align="center">
-                                        <b>#</b>
-                                    </td>
-                                    <td width="50%" align="left" style="font-family: 'Helvetica';font-size: 18px;">
-                                        <b>Fees Structure</b>
-                                    </td>
-                                    <td align="right" width="45%" style="font-family: 'Helvetica';font-size: 18px;">
-                                        <b>Total</b>
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <t t-set="counter" t-value="0"/>
-                                <t t-foreach="o.line_ids" t-as="l">
-                                    <t t-set="counter" t-value="counter+1"/>
-                                    <tr>
-                                        <td>
-                                            <span><t t-esc="counter"></t></span>
-                                        </td>
-                                        <td width="5%" align="center" style="font-family: 'Helvetica';font-size: 16px;">
-                                        </td>
-                                        <td width="50%" align="left" style="font-family: 'Helvetica';font-size: 16px;">
-                                            <span t-field="l.name"></span>
-                                        </td>
-                                        <td align="right" width="45%" style="font-family: 'Helvetica';font-size: 16px;">
-                                            <span t-field="l.amount" t-options='{"widget": "monetary","display_currency": l.company_id.currency_id}'></span>
-                                        </td>
-                                    </tr>
-                                </t>
-                            </tbody>
-                        </table>
-                        <div class="row">
-                            <div class="col-4 pull-right">
-                                <table class="table table-condensed">
-                                    <tr>
-                                        <td><strong>Total Fees</strong></td>
-                                        <td class="text-right">
-                                            <span t-field="o.total"
-                                                t-options='{"widget": "monetary","display_currency": o.currency_id}'/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Amount Paid</strong></td>
-                                        <td class="text-right">
-                                            <span t-field="o.paid_amount"
-                                                />
-                                        </td>
-                                    </tr>
-                                    <tr class="border-black">
-                                        <td><strong>Due Amount</strong></td>
-                                        <td class="text-right">
-                                            <span t-field="o.due_amount"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-4 pull-right">
-                            <br/><br/><br/><br/><br/><br/><br/>
-                            <b>Principal,</b>
-                            <br/><br/><br/>
-                            <span style="font-family: 'Helvetica';font-size: 16px;">Authorized Signature</span>
-                            <br />
-                       </div>
-                    </div>
-                </t>
+
+                   <table style="width:100%; border: 1px solid; border-radius:6px; border-collapse:separate; padding:10px">
+
+                       <tr>
+                            <td style="color:green">School Account Office</td>
+                            <td rowspan="2" style="text-align:right" ><img width="100px" src="https://www.hellotech.com/guide/wp-content/uploads/2020/05/HelloTech-qr-code-1024x1024.jpg" /></td>
+                       </tr>
+                       <tr> <td>Mode of Payment: Cash</td>  </tr>
+                       <tr> <td>Branch: Branch One</td>
+
+                      </tr>
+                   </table>
+                    <table style="width:100%; ">
+                          <tr style="  border-bottom: 1pt solid gray;"> <td style="color:red"><b> Voucher Id: <b t-field="o.number"></b></b></td> <td></td> <td style="color:white; background-color: green; border: 1pt solid green;text-align: center;">Student Copy</td>  </tr>
+                        <tr> <td><b>Issue Date:</b></td>  <td><b>Due Date:</b></td> <td><b>Validation Date:</b></td>  </tr>
+                          <tr style="  border-bottom: 1pt solid gray;"> <td>01-Jul-2022</td>  <td>15-Jul-2022</td> <td>28-Jul-2022</td>  </tr>
+                          <tr > <td>Name:  <b t-field="o.sudo().student_id.name"></b></td>  <td></td> <td>Class: <b t-field="o.sudo().student_id.standard_id"></b></td>  </tr>
+                        <tr> <td>Father Name: <b t-field="o.sudo().student_id.parent_id.name"></b></td>  <td></td> <td>GRN:<b t-field="o.sudo().student_id.roll_no"></b></td>  </tr>
+                          <tr style="color:white;background-color: green; border: 1pt solid green;"> <td>Particulrs</td>  <td></td> <td>Annual</td>  </tr>
+                          <tr style="color:white;background-color: green; border: 1pt solid green;"> <td></td>  <td>Arrears</td> <td></td>  </tr>
+                          <tr style="  border-bottom: 1pt dashed gray;"> <td>Monthly Fee</td>  <td></td> <td><b t-field="o.total"></b></td>  </tr>
+
+                          <tr style="color:gray; font-size: small"> <td>Fee is payable in advance every month</td>    </tr>
+                          <tr style="color:gray; font-size: small"> <td>After due date 100 RS fine will be charge</td>    </tr>
+                          <tr style="color:gray; font-size: small"> <td>After due date 100 RS fine will be charge</td>    </tr>
+                          <tr style="color:gray; font-size: small"> <td>After due date 100 RS fine will be charge</td>    </tr>
+                          <tr style="color:gray; font-size: small"> <td>After due date 100 RS fine will be charge</td>    </tr>
+                          <tr style="color:gray; font-size: small"> <td>After due date 100 RS fine will be charge</td>    </tr>
+
+                   </table>
+
+                </t>`       `
             </t>
         </t>
     </template>

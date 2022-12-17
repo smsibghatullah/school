@@ -31,7 +31,8 @@ class StudentFeesRegister(models.Model):
         "State", readonly=True, default="draft",
         help="State of student fee registration form")
     journal_id = fields.Many2one("account.journal", "Journal",
-        help="Select Journal", required=False)
+        help="Select Journal", required=False
+                                 )
     company_id = fields.Many2one("res.company", "Company", required=True,
         change_default=True, readonly=True,
         default=lambda self: self.env.user.company_id,
@@ -40,6 +41,10 @@ class StudentFeesRegister(models.Model):
         "Fees Structure", help="Fee structure")
     standard_id = fields.Many2one("standard.standard", "Class",
         help="Enter student standard")
+
+    # @api.onchange("fees_structure")
+    # def on_change_fees_structure(self):
+    #     self.standard_id =self.fees_structure.class_id.id ;
 
     def fees_register_draft(self):
         """Changes the state to draft"""
@@ -165,6 +170,8 @@ class StudentFeesStructure(models.Model):
 
     name = fields.Char("Name", required=True, help="Fee structure name")
     code = fields.Char("Code", required=True, help="Fee structure code")
+    # class_id = fields.Many2one("standard.standard")
+
     line_ids = fields.Many2many("student.fees.structure.line",
         "fees_structure_payslip_rel", "fees_id", "slip_id",
         "Fees Structure", help="Fee structure line")

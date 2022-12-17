@@ -9,6 +9,7 @@ from odoo import api, fields, models
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.tools.translate import _
+from datetime import date
 
 EM = (r"[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$")
 
@@ -289,6 +290,21 @@ class SchoolStandard(models.Model):
     class_room_id = fields.Many2one('class.room', 'Room Number',
                                     help='Class room of the standard')
 
+    # @api.model
+    # def _cron_mark_daily_attendance(self):
+    #     classes_records = self.env['school.standard'].sudo().search([])
+    #     for classes_record in classes_records:
+    #         print('sdsdsdsddddd')
+    #         if (classes_record.user_id.id):
+    #             rec = self.env['daily.attendance'].create({
+    #                 'user_id': classes_record.user_id.id,
+    #                 'standard_id': classes_record.standard_id.id,
+    #                 'date':  date.today(),
+    #             })
+    #             rec.get_students()
+
+
+
     @api.onchange('standard_id', 'division_id')
     def onchange_combine(self):
         '''Onchange to assign name respective of it's standard and division'''
@@ -348,8 +364,7 @@ class SchoolSchool(models.Model):
     company_id = fields.Many2one('res.company', 'Company', ondelete="cascade",
                                  required=True, delegate=True,
                                  help='Company_id of the school')
-    com_name = fields.Char('School Name', related='company_id.name',
-                           store=True, help='School name')
+    com_name = fields.Char('School Name')
     code = fields.Char('Code', required=True, help='School code')
     standards = fields.One2many('school.standard', 'school_id',
                                 'Standards', help='School standard')
@@ -366,8 +381,8 @@ class SchoolSchool(models.Model):
     def create(self, vals):
         '''Inherited create method to assign company_id to school'''
         res = super(SchoolSchool, self).create(vals)
-        main_company = self.env.ref('base.main_company')
-        res.company_id.parent_id = main_company.id
+        # main_company = self.env.ref('base.main_company')
+        # res.company_id.parent_id = main_company.id
         return res
 
 
