@@ -24,6 +24,7 @@
             <search string="Fees Structure">
                 <field name="name"/>
                 <field name="code"/>
+
                 <group expand="1" string="Group By">
                     <filter string="Code" name="code" context="{'group_by':'code'}"/>
                     <filter string="Structure Name" name="name" context="{'group_by':'name'}"/>
@@ -38,9 +39,13 @@
         <field name="arch" type="xml">
             <form string="Student Fees Structure">
                 <sheet>
-                    <group col="6" colspan="4">
+                    <group col="2" colspan="4">
                         <field name="name" placeholder="Name"/>
                         <field name="code" placeholder="Code"/>
+
+<!--                        <field name="class_id" placeholder="Class"/>-->
+
+
                     </group>
                     <notebook colspan="4">
                         <page string="Fees Structure">
