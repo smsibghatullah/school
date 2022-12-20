@@ -74,7 +74,7 @@ class APIController(http.Controller):
             return invalid_response("Access error", "Error: %s" % e.name)
 
     @validate_token
-    @http.route(_routes, type="http", auth="none", methods=["POST"], csrf=False)
+    @http.route(_routes, type="json", auth="none", methods=["POST"], csrf=False)
     def post(self, model=None, id=None, **payload):
         """Create a new record.
         Basic sage:

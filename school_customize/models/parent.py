@@ -1,8 +1,6 @@
 from odoo import models, fields, api
 
 
-
-
 class ParentCustomize(models.Model):
 
     _inherit = 'school.parent'
@@ -16,3 +14,11 @@ class ParentCustomize(models.Model):
     office_address = fields.Char(string='Office Address')
     alive = fields.Boolean(string='alive')
 
+    @api.model
+    def create(self, vals):
+        res = super(ParentCustomize, self).create(vals)
+        channel_id = self.env['mail.channel'].create({'name': vals['name']+'_Parent',
+                                         'channel_type':'chat',
+                                         'public': 'private'})
+        channel_id.channel_last_seen_partner_ids = [(0, 0, {'partner_id': res.commercial_partner_id.id})]
+        return res

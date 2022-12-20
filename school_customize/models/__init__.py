@@ -9,3 +9,5 @@ from . import section
 from . import student
 from . import teacher
 from . import school_fees
+from . import notices
+from . import standard_standard

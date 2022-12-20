@@ -2,7 +2,7 @@
 <odoo>
 
 
-  <record id="cusotmaize_view_school_teacher_tree" model="ir.ui.view">
+      <record id="cusotmaize_view_school_teacher_tree" model="ir.ui.view">
             <field name="name">cusotmaize.school.teacher.tree</field>
            <field name="inherit_id" ref="school.view_school_teacher_tree" />
             <field name="model">school.teacher</field>

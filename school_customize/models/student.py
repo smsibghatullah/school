@@ -39,7 +39,17 @@ class StudentCustomize(models.Model):
         edit_res = self.onchange_standard_id(res)
         return res
 
+    def write(self, vals):
+        res = super(StudentCustomize, self).write(vals)
+        print(self.standard_id.name)
 
+        channel_id = self.env['mail.channel'].search([('name','=',self.standard_id.name)])
+        if not channel_id:
+            channel_id = self.env['mail.channel'].create({'name': self.standard_id.name})
+
+        for item in self.parent_id:
+            channel_id.channel_last_seen_partner_ids = [(0, 0,  { 'partner_id':item.commercial_partner_id.id })]
+        return res
 
 class StudentPayslipLine(models.Model):
     """Student PaySlip Line"""
