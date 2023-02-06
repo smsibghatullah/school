@@ -1,6 +1,15 @@
 from odoo import models, fields, api
 
 
+
+class SchoolSchool(models.Model):
+    ''' Defining School Information'''
+
+    _inherit = 'school.school'
+    _description = 'School Information'
+    _rec_name = "name"
+
+
 class ParentCustomize(models.Model):
 
     _inherit = 'school.parent'

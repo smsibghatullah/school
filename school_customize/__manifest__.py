@@ -2,13 +2,13 @@
 {
     'name': "Alhamd School Project",
 
-    'summary': """DSM School customization for Alhum Schhol""",
+    'summary': """DSM School customization for Alhamd school""",
 
     'description': """
     """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'author': "Dynamic Solution Maker",
+    'website': "http://dsmpk.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -32,7 +32,9 @@
         'views/student_payslip.xml',
         'views/notice.xml',
         'data/cron.xml',
-        'wizards/payment_fee_wizard.xml'
+        'wizards/payment_fee_wizard.xml',
+        'reports/report_view.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [
