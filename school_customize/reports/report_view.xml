@@ -18,7 +18,7 @@
         <report id="school_fees.report_student_payslip_qweb"
                 string="Student Payslip"
                 model="student.payslip"
-                report_type = "qweb-pdf"
+                report_type = "qweb-html"
                 paperformat="fee_slip_report"
                 file="school_fees.student_payslip"
                 name="school_fees.student_payslip" />

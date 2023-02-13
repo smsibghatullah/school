@@ -3,246 +3,550 @@
 <odoo>
     <template id="student_payslip_custom" inherit_id="school_fees.student_payslip">
         <xpath expr="//t[@t-call='web.external_layout']" position="replace">
-<!--                    <t t-call="web.external_layout">-->
-                        <t t-set="company" t-value="o.company_id.sudo()"/>
+            <!--                    <t t-call="web.external_layout">-->
+            <t t-set="company" t-value="o.company_id.sudo()"/>
 
-                    <div class="float-container" style="width:99    %">
-                      <div class="float-child" style="width: 45%;float: left;margin: 5px;">
-                        <div style="background-color:green;height:30px;width:100%;"></div>
+            <div class="float-container" style="width:99%">
+                <div class="float-child" style="width: 45%;float: left;margin: 5px;">
+                    <div style="background-color:#5ac049;height:20px;width:100%;"></div>
 
-                       <div class="row">
-                            <table><tr><td><img height="30px"  t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="height: 150px;"
-                                     alt="Logo"/></td>
-                            <td style="font-size:20px">AL HAMD SCHOOL</td></tr></table>
-                        </div>
-                        <table style="width:100%; border: 1px solid; border-radius:6px; border-collapse:separate; padding:10px">
-                            <tr>
-                                <td>School Office<br/><br/>Mode of Payment: Cash<br/><br/>Branch: Branch One
-                                </td><td style="text-align: right;"><img width="150px"
-                                         src="https://www.hellotech.com/guide/wp-content/uploads/2020/05/HelloTech-qr-code-1024x1024.jpg"/></td>
-                                <td style="color:green"></td>
-                                <td rowspan="2" style="text-align:right">
-
-                                </td>
-                            </tr>
-                        </table>
-                        <table style="width:100%; ">
-                            <tr style="  border-bottom: 1pt solid gray;">
-                                <td style="color:red; height:70px">
-                                    <b>Voucher Id:
-                                        <b t-field="o.number"></b>
-                                    </b>
-                                </td>
-                                <td></td>
-                                <td>
-                                    <div style="padding:10px;color:white; background-color: green; border: 1pt solid green;text-align: center;">
-                                    Student Copy
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <b>Issue Date:</b>
-                                </td><td></td>
-                                <td style="widht:100%;">
-                                    <b>Payment Date:</b>
-                                </td>
-                            </tr>
-                            <tr style="  border-bottom: 1pt solid gray;">
-                                <td>
-                                    <span t-field="o.sudo().create_date" t-options='{"widget": "date"}'/>
-                                </td><td></td>
-                                <td>
-                                    <span t-field="o.sudo().payment_date" t-options='{"widget": "date"}'/>
-                                </td>
-
-                            </tr>
-
+                    <div class="row">
+                        <table>
 
                             <tr>
                                 <td>
-                                    <b>Name:</b>
-                                    <span t-field="o.sudo().student_id.name"></span>
+                                    <img height="30px" t-if="company.logo" t-att-src="image_data_uri(company.logo)"
+                                         style="height: 80px;"
+                                         alt="Logo"/>
                                 </td>
                                 <td></td>
-                                <td>
-                                    <b>Class:</b>
-                                    <span t-field="o.sudo().student_id.standard_id"></span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <b>Father Name:</b>
-                                    <span t-field="o.sudo().student_id.parent_id.name"></span>
-                                </td>
                                 <td></td>
-                                <td>
-                                    <b>GRN:</b>
-                                    <span t-field="o.sudo().student_id.roll_no"></span>
-                                </td>
-                            </tr>
-                            <tr style="color:white;background-color: green; border: 1pt solid green;">
-                                <td>Particulars</td>
                                 <td></td>
-                                <td>Amount</td>
-                            </tr>
-                            <t t-foreach="o.line_ids" t-as="line_id">
-                                <tr style="  border-bottom: 1pt dashed gray;">
-                                    <td>
-                                        <span t-field="line_id.name"></span>
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                        <b t-field="line_id.amount"></b>
-                                    </td>
-                                </tr>
-                            </t>
-
-                    <tr><td colspan="2">Total:</td><td > <span t-field="o.total" /></td></tr>
-                    <tr><td colspan="2">Discount:</td><td><span t-field="o.discount" /></td></tr>
-                    <tr><td colspan="2">Final Amount:</td><td><span t-field="o.final_amount" /></td></tr>
-                    <tr><td colspan="2">Paid Amount:</td><td><span t-field="o.paid_amount" /></td></tr>
-                    <tr><td colspan="2">Remaining Amount:</td><td><span t-field="o.due_amount" /></td></tr>
-                   <tr><td></td></tr>
-                   <tr><td></td></tr>
-                   <tr><td></td></tr>
-                    <tr style="color:gray; font-size: small">
-                        <td colspan="3">Fee is payable in advance every month</td>
-                    </tr>
-                    <tr style="color:gray; font-size: small">
-                        <td colspan="3">After due date 100 rs fine will be charged</td>                    </tr>
-                    <tr style="color:gray; font-size: small">
-                        <td colspan="3">Ensuring the time receipt of fees voucher is the responsibility of Parents and shall not be considered as an excuse.</td>
-                    </tr>
-                    <tr style="color:gray; font-size: small">
-                        <td colspan="3">Fees will not be acceptable in installment</td>
-                    </tr>
-                    <tr style="color:gray; font-size: small">
-                        <td colspan="3">Fees will not be acceptable without fees voucher</td>
-                    </tr>
-                  
-                    </table>
-                      </div>
-                      <div class="float-child" style="width: 45%;float: left;margin: 5px;">
-                      <div style="background-color:#14669b;height:30px;width:100%;"></div>
-                       <div class="row">
-                            <table><tr><td><img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="height: 150px;"
-                                     alt="Logo"/></td>
-                            <td style="font-size:20px">AL HAMD SCHOOL</td></tr></table>
-                        </div>
-                        <table style="width:100%; border: 1px solid; border-radius:6px; border-collapse:separate; padding:10px">
-                            <tr>
-                                <td>School Office<br/><br/>Mode of Payment: Cash<br/><br/>Branch: Branch One
-                                </td><td style="text-align: right;"><img width="150px"
-                                         src="https://www.hellotech.com/guide/wp-content/uploads/2020/05/HelloTech-qr-code-1024x1024.jpg"/></td>
-
-                            </tr>
-
-                        </table>
-                        <table style="width:100%; ">
-                            <tr style="  border-bottom: 1pt solid gray;">
-                                <td style="color:red; height:70px">
-                                    <b>Voucher Id:
-                                        <b t-field="o.number"></b>
-                                    </b>
-                                </td>
                                 <td></td>
-                                <td>
-                                    <div style="padding:10px;color:white; background-color: #14669b; border: 1pt solid green;text-align: center;">
-                                    Student Copy
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <b>Issue Date:</b>
-                                </td><td></td>
-                                <td>
-                                    <b>Payment Date:</b>
-                                </td>
-                            </tr>
-                            <tr style="  border-bottom: 1pt solid gray;">
-                                <td>
-                                    <span t-field="o.sudo().create_date" t-options='{"widget": "date"}'/>
-                                </td><td></td>
-                                <td>
-                                    <span t-field="o.sudo().payment_date" t-options='{"widget": "date"}'/>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <b>Name:</b>
-                                    <span t-field="o.sudo().student_id.name"></span>
-                                </td>
                                 <td></td>
-                                <td>
-                                    <b>Class:</b>
-                                    <span t-field="o.sudo().student_id.standard_id"></span>
+                                <td style="font-size:20px ; font-weight: bolder ; style=text-align: right">
+                                    AL HAMD SCHOOL
                                 </td>
+
                             </tr>
-
-                            <tr>
-                                <td>
-                                    <b>Father Name:</b>
-                                    <span t-field="o.sudo().student_id.parent_id.name"></span>
-                                </td>
-                                <td></td>
-                                <td>
-                                    <b>GRN:</b>
-                                    <span t-field="o.sudo().student_id.roll_no"></span>
-                                </td>
-                            </tr>
-                            <tr style="color:white;background-color: #14669b; border: 1pt solid green;">
-                                <td>Particulars</td>
-                                <td></td>
-                                <td>Amount</td>
-                            </tr>
-                            <t t-foreach="o.line_ids" t-as="line_id">
-                                <tr style="  border-bottom: 1pt dashed gray;">
-                                    <td>
-                                        <span t-field="line_id.name"></span>
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                        <b t-field="line_id.amount"></b>
-                                    </td>
-                                </tr>
-                            </t>
-
-
-<tr><td colspan="2">Total:</td><td> <span t-field="o.total" /></td></tr>
-                    <tr><td colspan="2">Discount:</td><td><span t-field="o.discount" /></td></tr>
-                    <tr><td colspan="2">Final Amount:</td><td><span t-field="o.final_amount" /></td></tr>
-                    <tr><td colspan="2">Paid Amount:</td><td><span t-field="o.paid_amount" /></td></tr>
-                    <tr><td colspan="2">Remaining Amount:</td><td><span t-field="o.due_amount" /></td></tr>
-                    <tr><td colspan="3"></td></tr>
-                    <tr><td colspan="3"></td></tr>
- <tr><td></td></tr>
-                   <tr><td></td></tr>
-                   <tr><td></td></tr>
-                    <tr style="color:gray; font-size: small">
-                        <td colspan="3">Fee is payable in advance every month</td>
-                    </tr>
-                    <tr style="color:gray; font-size: small">
-                        <td colspan="3">After due date 100 rs fine will be charged</td>                    </tr>
-                    <tr style="color:gray; font-size: small">
-                        <td colspan="3">Ensuring the time receipt of fees voucher is the responsibility of Parents and shall not be considered as an excuse.</td>
-                    </tr>
-                    <tr style="color:gray; font-size: small">
-                        <td colspan="3">Fees will not be acceptable in installment</td>
-                    </tr>
-                    <tr style="color:gray; font-size: small">
-                        <td colspan="3">Fees will not be acceptable without fees voucher</td>
-                    </tr>
-
 
 
                         </table>
-                      </div>
                     </div>
-                
+                    <table style="width:100%; border: 1px solid; border-radius:30px; color : gray ; border-collapse:separate; padding-left:10px">
+                        <tr>
+                            <td>
+                                <span style="color : green">School Account Office</span>
+                                <br/>
+                                <span style=" font-weight: bolder ; color : black">Mode of Payment: Cash</span>
+                                <br/>Branch: Branch One
+                            </td>
+
+                            <td style="text-align: right;">
+                                <img width="80px"
+                                     src="https://www.hellotech.com/guide/wp-content/uploads/2020/05/HelloTech-qr-code-1024x1024.jpg"/>
+                            </td>
+                            <td style="color:green"></td>
+                            <td rowspan="2" style="text-align:right">
+
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:100%; ">
+                        <tr style="  border-bottom: 1pt solid gray;">
+                            <td style="color:red; height:70px">
+                                <b>Voucher Id:
+                                    <b t-field="o.number"></b>
+                                </b>
+                            </td>
+                            <td></td>
+                            <td>
+                                <div style="padding:10px;color:white; background-color: #5ac049; border: 1pt solid green;text-align: center;">
+                                    Student Copy
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Issue Date:</b>
+                            </td>
+
+                            <td>
+                                <b>Due Date:</b>
+                            </td>
+
+                            <td>
+                                <b>Validity Date:</b>
+                            </td>
+
+
+                        </tr>
+                        <tr style="  border-bottom: 1pt solid gray;">
+                            <td>
+                                <span t-field="o.sudo().create_date" t-options='{"widget": "date"}'/>
+                            </td>
+                            <td>
+                                <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                            </td>
+                            <td>
+                                <span t-field="o.sudo().validity_date" t-options='{"widget": "date"}'/>
+                            </td>
+
+                        </tr>
+
+
+                        <tr style="  border-bottom: 1pt solid gray;">
+                            <td>
+                                <b>Name:</b>
+                                <span t-field="o.sudo().student_id.name"></span>
+                            </td>
+                            <td></td>
+                            <td>
+                                <b>Class:</b>
+                                <span t-field="o.sudo().student_id.standard_id"></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>Father Name:</b>
+                                <span t-field="o.sudo().student_id.parent_id.name"></span>
+                            </td>
+                            <td></td>
+                            <td>
+                                <b>GRN:</b>
+                                <span t-field="o.sudo().student_id.roll_no"></span>
+                            </td>
+                        </tr>
+                        <tr style="color:white;background-color: #5ac049; border: 1pt solid green;">
+                            <td>Particulars</td>
+                            <td></td>
+                            <td>Amount</td>
+                        </tr>
+
+                        <tr>
+                            <td style="color : #5ac049 ">
+                                Monthly Fee
+                            </td>
+                            <td></td>
+                            <t t-foreach="o.line_ids" t-as="line_id">
+                                <td>
+                                    <b t-field="line_id.amount"></b>
+                                </td>
+                            </t>
+                        </tr>
+                        <tr>
+                            <td style="color : black ">
+                                <b t-field="o.line_ids[0].name"></b>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="color : #5ac049 ">
+                             Payable by:
+                            </td>
+                             <td style="color : #5ac049 ">
+                             <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                            </td>
+                             <td style="color : #5ac049 ">
+                              <b t-field="o.line_ids[0].amount"></b>
+                            </td>
+                        </tr>
+
+                         <tr style="  border-bottom: 1pt dashed gray;">
+                            <td style="color : black ">
+                             Payable by:
+                            </td>
+                             <td style="color : black ">
+                             <span t-field="o.sudo().validity_date" t-options='{"widget": "date"}'/>
+                            </td>
+                             <td style="color : black ">
+                              <b t-field="o.line_ids[0].amount"></b>
+                            </td>
+                        </tr>
+
+
+                        <!--                            <t t-foreach="o.line_ids" t-as="line_id">-->
+                        <!--                                <tr style="  border-bottom: 1pt dashed gray;">-->
+                        <!--                                    <td>-->
+                        <!--                                        <span t-field="line_id.name"></span>-->
+                        <!--                                    </td>-->
+                        <!--                                    <td></td>-->
+                        <!--                                    <td>-->
+                        <!--                                        <b t-field="line_id.amount"></b>-->
+                        <!--                                    </td>-->
+                        <!--                                </tr>-->
+                        <!--                            </t>-->
+
+                        <!--                    <tr><td colspan="2">Total:</td><td > <span t-field="o.total" /></td></tr>-->
+                        <!--                    <tr><td colspan="2">Discount:</td><td><span t-field="o.discount" /></td></tr>-->
+                        <!--                    <tr><td colspan="2">Final Amount:</td><td><span t-field="o.final_amount" /></td></tr>-->
+                        <!--                    <tr><td colspan="2">Paid Amount:</td><td><span t-field="o.paid_amount" /></td></tr>-->
+                        <!--                    <tr><td colspan="2">Remaining Amount:</td><td><span t-field="o.due_amount" /></td></tr>-->
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr style="color:gray; font-size: small">
+                            <td colspan="3">Fee is payable in advance every month</td>
+                        </tr>
+                        <tr style="color:gray; font-size: small">
+                            <td colspan="3">After due date 100 rs fine will be charged</td>
+                        </tr>
+                        <tr style="color:gray; font-size: small">
+                            <td colspan="3">Ensuring the time receipt of fees voucher is the responsibility of Parents
+                                and shall not be considered as an excuse.
+                            </td>
+                        </tr>
+                        <tr style="color:gray; font-size: small">
+                            <td colspan="3">Fees will not be acceptable in installment</td>
+                        </tr>
+                        <tr style="color:gray; font-size: small">
+                            <td colspan="3">Fees will not be acceptable without fees voucher</td>
+                        </tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td style="padding-bottom: 50%;"></td>
+                        </tr>
+
+                         <tr >
+                            <td style="font-size: small;color : black ;display: table-row ;padding-left: 20px ; padding-right: 20px ;border-bottom: 1pt dashed black ; text-align: left">
+                            Accountant Sign
+                            </td>
+                           <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td style="font-size: small;color : black ;display: table-row; padding-left: 20px ; padding-right: 20px ;border-bottom: 1pt dashed black ; text-align: right">
+                            Authorized Signature
+                            </td>
+
+                         </tr>
+
+                         <tr style="font-size: small">
+                            <td style="color:black ; font-weight:bold;">Address:</td>
+                             <td></td>
+                            <td style="color:black">Plot#e32 and 33 block 4 metroville site karachi</td>
+                        </tr>
+
+                         <tr style="font-size: small">
+                            <td style="color:black ; font-weight:bold;">Contact:</td>
+                             <td></td>
+                            <td style="color:black">021-36750006</td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td style="color:black ; font-weight:bold;">Email :</td>
+                             <td></td>
+                            <td style="color:black">alhamdfoundation.school@gmail.com </td>
+                        </tr>
+
+                    </table>
+
+                    <div style="background-color:#5ac049;height:20px;width:100%;"></div>
+                </div>
+
+                <div class="float-child" style="width: 45%;float: left;margin: 5px;">
+                    <div style="background-color:#007dfa;height:20px;width:100%;"></div>
+                    <div class="row">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
+                                         style="height: 80px;"
+                                         alt="Logo"/>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td style="font-size:20px ; font-weight: bolder">AL HAMD SCHOOL</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table style="width:100%; border: 1px solid; border-radius:30px; color : gray ; border-collapse:separate; padding-left:10px">
+                        <tr>
+                            <td>
+                                <span style="color: green">School Account Office</span>
+                                <br/>
+                                <span style=" font-weight: bolder ; color: black">Mode of Payment: Cash</span>
+                                <br/>Branch: Branch One
+                            </td>
+                            <td style="text-align: right;">
+                                <img width="80px"
+                                     src="https://www.hellotech.com/guide/wp-content/uploads/2020/05/HelloTech-qr-code-1024x1024.jpg"/>
+                            </td>
+
+                            <td style="color:green"></td>
+                            <td rowspan="2" style="text-align:right"></td>
+
+
+                        </tr>
+
+                    </table>
+                    <table style="width:100%; ">
+                        <tr style="  border-bottom: 1pt solid gray;">
+                            <td style="color:red; height:70px">
+                                <b>Voucher Id:
+                                    <b t-field="o.number"></b>
+                                </b>
+                            </td>
+                            <td></td>
+                            <td>
+                                <div style="padding:10px;color:white; background-color: #007dfa; border: 1pt solid green;text-align: center;">
+                                    Student Copy
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Issue Date:</b>
+                            </td>
+                            <td>
+                                <b>Due Date:</b>
+                            </td>
+                            <td>
+                                <b>Validity Date:</b>
+                            </td>
+                        </tr>
+                        <tr style="  border-bottom: 1pt solid gray;">
+                            <td>
+                                <span t-field="o.sudo().create_date" t-options='{"widget": "date"}'/>
+                            </td>
+                            <td>
+                                <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                            </td>
+                            <td>
+                                <span t-field="o.sudo().validity_date" t-options='{"widget": "date"}'/>
+                            </td>
+
+                        </tr>
+                        <tr style="  border-bottom: 1pt solid gray;">
+                            <td>
+                                <b>Name:</b>
+                                <span t-field="o.sudo().student_id.name"></span>
+                            </td>
+                            <td></td>
+                            <td>
+                                <b>Class:</b>
+                                <span t-field="o.sudo().student_id.standard_id"></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>Father Name:</b>
+                                <span t-field="o.sudo().student_id.parent_id.name"></span>
+                            </td>
+                            <td></td>
+                            <td>
+                                <b>GRN:</b>
+                                <span t-field="o.sudo().student_id.roll_no"></span>
+                            </td>
+                        </tr>
+                        <tr style="color:white;background-color: #007dfa; border: 1pt solid green;">
+                            <td>Particulars</td>
+                            <td></td>
+                            <td>Amount</td>
+                        </tr>
+
+                                                <tr>
+                            <td style="color : #007dfa ">
+                                Monthly Fee
+                            </td>
+                            <td></td>
+                            <t t-foreach="o.line_ids" t-as="line_id">
+                                <td>
+                                    <b t-field="line_id.amount"></b>
+                                </td>
+                            </t>
+                        </tr>
+                        <tr>
+                            <td style="color : black ">
+                                <b t-field="o.line_ids[0].name"></b>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="color : #007dfa ">
+                             Payable by:
+                            </td>
+                             <td style="color : #007dfa ">
+                             <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                            </td>
+                             <td style="color : #007dfa ">
+                              <b t-field="o.line_ids[0].amount"></b>
+                            </td>
+                        </tr>
+
+                         <tr style="  border-bottom: 1pt dashed gray;">
+                            <td style="color : black ">
+                             Payable by:
+                            </td>
+                             <td style="color : black ">
+                             <span t-field="o.sudo().validity_date" t-options='{"widget": "date"}'/>
+                            </td>
+                             <td style="color : black ">
+                              <b t-field="o.line_ids[0].amount"></b>
+                            </td>
+                        </tr>
+
+
+
+<!--                        <t t-foreach="o.line_ids" t-as="line_id">-->
+<!--                            <tr style="  border-bottom: 1pt dashed gray;">-->
+<!--                                <td>-->
+<!--                                    <span t-field="line_id.name"></span>-->
+<!--                                </td>-->
+<!--                                <td></td>-->
+<!--                                <td>-->
+<!--                                    <b t-field="line_id.amount"></b>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </t>-->
+
+
+<!--                        <tr>-->
+<!--                            <td colspan="2">Total:</td>-->
+<!--                            <td>-->
+<!--                                <span t-field="o.total"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td colspan="2">Discount:</td>-->
+<!--                            <td>-->
+<!--                                <span t-field="o.discount"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td colspan="2">Final Amount:</td>-->
+<!--                            <td>-->
+<!--                                <span t-field="o.final_amount"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td colspan="2">Paid Amount:</td>-->
+<!--                            <td>-->
+<!--                                <span t-field="o.paid_amount"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td colspan="2">Remaining Amount:</td>-->
+<!--                            <td>-->
+<!--                                <span t-field="o.due_amount"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td colspan="3"></td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td colspan="3"></td>-->
+<!--                        </tr>-->
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr style="color:gray; font-size: small">
+                            <td colspan="3">Fee is payable in advance every month</td>
+                        </tr>
+                        <tr style="color:gray; font-size: small">
+                            <td colspan="3">After due date 100 rs fine will be charged</td>
+                        </tr>
+                        <tr style="color:gray; font-size: small">
+                            <td colspan="3">Ensuring the time receipt of fees voucher is the responsibility of Parents
+                                and shall not be considered as an excuse.
+                            </td>
+                        </tr>
+                        <tr style="color:gray; font-size: small">
+                            <td colspan="3">Fees will not be acceptable in installment</td>
+                        </tr>
+                        <tr style="color:gray; font-size: small">
+                            <td colspan="3">Fees will not be acceptable without fees voucher</td>
+                        </tr>
+                           <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+
+                    </table>
+
+
+                     <table>
+                        <tr>
+                            <td style="padding-bottom: 50%;"></td>
+                        </tr>
+
+                         <tr >
+                            <td style="font-size: small ;color : black ;display: table-row ;padding-left: 20px ; padding-right: 20px ;border-bottom: 1pt dashed black">
+                            Accountant Sign
+                            </td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td style=" font-size: small ;color : black ; display: table-row; padding-left: 20px ; padding-right: 20px ;border-bottom: 1pt dashed black ; text-align: right">
+                            Authorized Signature
+                            </td>
+
+                         </tr>
+                         <tr></tr>
+                         <tr></tr>
+                         <tr></tr>
+
+                         <tr style="font-size: small">
+                            <td style="color:black ; font-weight:bold;">Address:</td>
+                             <td></td>
+                            <td style="color:black">Plot#e32 and 33 block 4 metroville site karachi</td>
+                        </tr>
+
+                         <tr style="font-size: small">
+                            <td style="color:black ; font-weight:bold;">Contact:</td>
+                             <td></td>
+                            <td style="color:black">021-36750006</td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td style="color:black ; font-weight:bold;">Email :</td>
+                             <td></td>
+                            <td style="color:black">alhamdfoundation.school@gmail.com </td>
+                        </tr>
+
+                    </table>
+
+                    <div style="background-color:#007dfa;height:20px;width:100%;"></div>
+                </div>
+            </div>
+
         </xpath>
     </template>
 

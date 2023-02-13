@@ -27,6 +27,19 @@
       </record>
 
 
+    <record id="customization_view_student_fees_register_form" model="ir.ui.view">
+        <field name="name">customization.student.fees.register.form</field>
+     <field name="inherit_id" ref="school_fees.view_student_fees_register_form" />
+        <field name="model">student.fees.register</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group/field[@name='date']" position="after">
+                     <field name="due_date" placeholder="Class"/>
+                <field name="validity_date" placeholder="Class"/>
+              </xpath>
+        </field>
+    </record>
+
+
 
 
 

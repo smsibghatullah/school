@@ -75,6 +75,12 @@ class StudentPayslip(models.Model):
     final_amount = fields.Float("Final Amount", readonly=True, digits=(16, 2), help="final Amount")
 
 
+    due_date = fields.Date("Due Date", required=True, help="Due Date",
+                       default=fields.Date.context_today)
+    validity_date = fields.Date("Validity Date", required=True, help="Validity Date",
+                       default=fields.Date.context_today)
+
+
     # fees_heads_structure_line = fields.Many2many("student.fees.structure.line",
     #                             "student_fees_structures", "fees_id", "slip_id",
     #                             "Fees Structure", help="Fee structure line")
@@ -156,7 +162,7 @@ class StudentPayslip(models.Model):
             if not rec.fees_structure_id:
                 raise ValidationError(_("Kindly, Select Fees Structure!"))
 
-            #old un-piad record
+
             old_payslips = self.env['student.payslip'].search([('state','in',['draft','confirm']),
                                                                ('student_id','=',rec.student_id.id)])
             old_payslip_partial_paid = self.env['student.payslip'].search([('state','in',['pending']),
@@ -217,8 +223,8 @@ class StudentPayslip(models.Model):
 
 
 
-            amount= 0
-            discount = 0
+            amount= 0.0
+            discount = 0.0
             # amount = sum(data.amount for data in rec.line_ids)
             for data in rec.line_ids:
                 amount += data.amount
