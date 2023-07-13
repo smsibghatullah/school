@@ -4,6 +4,7 @@ from odoo import models, fields, api,_
 from odoo.exceptions import ValidationError
 
 
+
 class StudentCustomize(models.Model):
     _inherit = 'student.student'
 
@@ -48,7 +49,9 @@ class StudentCustomize(models.Model):
             channel_id = self.env['mail.channel'].create({'name': self.standard_id.name})
 
         for item in self.parent_id:
-            channel_id.channel_last_seen_partner_ids = [(0, 0,  { 'partner_id':item.commercial_partner_id.id })]
+            if item.commercial_partner_id.id not in channel_id.channel_partner_ids.ids:
+                channel_id.channel_last_seen_partner_ids = [(0, 0,  { 'partner_id': item.commercial_partner_id.id })]
+
         return res
 
 class StudentPayslipLine(models.Model):
