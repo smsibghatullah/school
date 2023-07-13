@@ -48,4 +48,48 @@
         <field name="act_window_id" ref="school.action_student_reminder" />
     </record>
 
+      <record id="action_contact_us_form" model="ir.actions.act_window">
+        <field name="name">Contact Us</field>
+        <field name="res_model">contactus</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_contactus_tree" model="ir.ui.view">
+        <field name="name">contactus</field>
+        <field name="model">contactus</field>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="title"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="custom_menu_contactus" name="ContactUs" parent="school.menu_reminders_root" action="action_contact_us_form"
+              groups="school.group_school_administration,school.group_school_student,school.group_school_parent" sequence="111"/>
+
+
+    <record id="action_introduction_form" model="ir.actions.act_window">
+        <field name="name">Introduction</field>
+        <field name="res_model">introduction</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_introduction_tree" model="ir.ui.view">
+        <field name="name">introduction</field>
+        <field name="model">introduction</field>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="title"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="custom_menu_introduction" name="Introduction" parent="school.menu_reminders_root" action="action_introduction_form"
+              groups="school.group_school_administration,school.group_school_student,school.group_school_parent" sequence="111"/>
+
+
+
+
 </odoo>

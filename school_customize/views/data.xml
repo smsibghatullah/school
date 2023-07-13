@@ -1,0 +1,10 @@
+<odoo>
+    <data  noupdate="1" >
+        <record id="journal_demo" model="account.journal">
+            <field name="name">Student Custom Invocie</field>
+            <field name="type">sale</field>
+            <field name="code">pkr</field>
+            <!-- Add other fields and their values -->
+        </record>
+    </data>
+</odoo>

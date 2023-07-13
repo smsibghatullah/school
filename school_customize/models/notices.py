@@ -26,3 +26,21 @@ class StudentReminder(models.Model):
             vals['stu_id'] = item.id
             res = super(StudentReminder, self).create(vals)
         return res
+
+
+class ContactUs(models.Model):
+
+   _name = "contactus"
+
+   title = fields.Char('Title', help='Contact Us')
+   description = fields.Text('Description',
+                             help='Description')
+
+
+class Introduction(models.Model):
+
+   _name = "introduction"
+
+   title = fields.Char('Title', help='Contact Us')
+   description = fields.Text('Description',
+                             help='Description')

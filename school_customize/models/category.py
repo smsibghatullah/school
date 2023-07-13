@@ -9,7 +9,6 @@ class Category(models.Model):
     @api.model
     def _cron_mark_daily_attendance(self):
         classes_records = self.env['school.standard'].sudo().search([])
-        print('sdsdddddddddddddddddddd')
         for classes_record in classes_records:
             print(classes_record)
             if (classes_record.user_id.id):

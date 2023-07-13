@@ -17,9 +17,9 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'school', 'school_fees'],
+    'depends': ['base', 'school', 'hr_attendance' , 'school_fees' , 'account'],
 
-    # always loaded
+    # always loaded,
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
@@ -34,6 +34,7 @@
         'data/cron.xml',
         'wizards/payment_fee_wizard.xml',
         'reports/report_view.xml',
+        'views/data.xml',
 
     ],
     # only loaded in demonstration mode

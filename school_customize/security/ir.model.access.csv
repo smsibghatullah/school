@@ -24,3 +24,5 @@ access_school_customize_teacher_section,school.customize.section,model_school_cu
 access_school_customize_in_admission_section,school.customize.section,model_school_customize_section,school.group_is_admission,1,1,1,1
 access_school_customize_user_in_admissions_section,school.customize.section,model_school_customize_section,school.group_is_admission,1,1,1,1
 access_school_customize_payment_fee_wizard,school.payment.fee.wizard,model_payment_fee_wizard,school.group_school_administration,1,1,1,1
+access_school_customize_contactus,contactus,model_contactus,school.group_school_administration,1,1,1,1
+access_school_customize_introduction,introduction,model_introduction,school.group_school_administration,1,1,1,1

@@ -20,7 +20,7 @@
                 model="student.payslip"
                 report_type = "qweb-html"
                 paperformat="fee_slip_report"
-                file="school_fees.student_payslip"
-                name="school_fees.student_payslip" />
+                file="school_customize.student_payslip_custom"
+                name="school_customize.student_payslip_custom"  />
 
 </odoo>

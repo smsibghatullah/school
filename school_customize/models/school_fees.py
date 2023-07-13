@@ -10,15 +10,23 @@ class StudentFeesRegister(models.Model):
     def on_change_fees_structure(self):
         self.standard_id = self.fees_structure.class_id.id;
 
-    def _get_default_journal(self):
-        return self.env['account.journal'].search(
-            [('id', '=', self.env.context.get('active_id'))]).id
+    # def _get_default_journal(self):
+    #     return self.env['account.journal'].search(
+    #         [('id', '=', self.env.context.get('active_id'))]).id
 
     due_date = fields.Date("Due Date", required=True, help="Due Date",
                        default=fields.Date.context_today)
     validity_date = fields.Date("Validity Date", required=True, help="Validity Date",
                        default=fields.Date.context_today)
+    journal_id = fields.Many2one(
+        "account.journal", "Journal",
+        help="Select Journal", required=False,
+        default=lambda self: self._get_default_journal()
+    )
 
+    def _get_default_journal(self):
+        journal =  self.env['account.journal'].search([('name' , '=' , "Student Custom Invocie")])[0].id
+        return journal
 
 
     def fees_register_confirm(self):

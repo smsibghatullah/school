@@ -11,3 +11,4 @@ from . import teacher
 from . import school_fees
 from . import notices
 from . import standard_standard
+from . import attendance
