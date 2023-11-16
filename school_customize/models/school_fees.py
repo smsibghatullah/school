@@ -25,7 +25,7 @@ class StudentFeesRegister(models.Model):
     )
 
     def _get_default_journal(self):
-        journal =  self.env['account.journal'].search([('name' , '=' , "Student Custom Invocie")])[0].id
+        journal =  self.env['account.journal'].search([('name' , '=' , "Student Custom Invoice")])[0].id
         return journal
 
 

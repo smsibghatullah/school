@@ -221,5 +221,8 @@
 
         </field>
     </record>
+<menuitem id="school.menu_admission_form_root" name="Admission" parent="school.menu_ems" sequence="1" groups="school.group_school_administration,school.group_is_admission"/>
+<menuitem id="school_attendance.menu_attendance" name="Attendance" parent="school.menu_ems" sequence="5" groups="school.group_school_administration,school.group_school_teacher,school.group_school_student,school.group_school_parent"/>
+<menuitem id="school_fees.menu_fees" name="Fees" parent="school.menu_ems" groups="school.group_school_administration,school.group_school_student,school.group_school_parent" sequence="11"/>
 
 </odoo>
