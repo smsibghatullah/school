@@ -140,21 +140,23 @@
                                 <td>Discount</td>
                                 <!--                            <td></td>-->
                                 <td>Amount</td>
+                                
                             </tr>
 
                             <t t-foreach="o.line_ids" t-as="line_id">
                                 <tr>
                                     <td style="color : #5ac049 ">
-                                        <b t-field="line_id.name"></b>
+                                        <b t-field="line_id.name"></b><b> Rs.</b>
                                     </td>
                                     <!--                                <td></td>-->
                                     <td>
-                                        <b t-field="line_id.discount_amount"></b>
+                                        <b t-field="line_id.discount_amount"></b><b> Rs.</b>
                                     </td>
                                     <!--                                <td></td>-->
                                     <td>
-                                        <b t-field="line_id.amount"></b>
+                                        <b t-field="line_id.amount"></b><b> Rs.</b>
                                     </td>
+                                   
                                 </tr>
                             </t>
                             <tr>
@@ -163,7 +165,7 @@
 
                             <tr>
                                 <td style="color : #5ac049 ">
-                                    Payable by:
+                                    Payable Amount:
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #5ac049 ">
@@ -171,23 +173,68 @@
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #5ac049 ">
-                                    <b t-field="o.sudo().final_amount"></b>
+                                    <b t-field="o.sudo().final_amount" ></b> <b> Rs.</b>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="color : #5ac049 ">
+                                    Paid Amount:
+                                </td>
+                                <!--                            <td></td>-->
+                                <td style="color : #5ac049 ">
+                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                </td>
+                                <!--                            <td></td>-->
+                                <td style="color : #5ac049 ">
+                                    <b t-field="o.sudo().paid_amount"></b>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <td style="color : #5ac049 ">
+                                    Due Amount:
+                                </td>
+                                <!--                            <td></td>-->
+                                <td style="color : #5ac049 ">
+                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                </td>
+                                <!--                            <td></td>-->
+                                <td style="color : #5ac049 ">
+                                    <b t-field="o.sudo().due_amount"></b>
+                                </td>
+                            </tr>
+
+                                                        <tr>
+                                <td style="color : #5ac049 ">
+                                    Payable Amount:
+                                </td>
+                                <!--                            <td></td>-->
+                                <td style="color : #5ac049 ">
+                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                </td>
+                                <!--                            <td></td>-->
+                                <td style="color : #5ac049 ">
+                                    <b t-field="o.sudo().final_amount" ></b> <b> Rs.</b>
                                 </td>
                             </tr>
 
                             <tr style="  border-bottom: 1pt dashed gray;">
                                 <td style="color : black ">
-                                    Payable by:
+                                    Payable by:<span t-esc="user.name"></span>
                                 </td>
+                                
                                 <!--                            <td></td>-->
                                 <td style="color : black ">
                                     <span t-field="o.sudo().validity_date" t-options='{"widget": "date"}'/>
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : black ">
-                                    <b t-field="o.sudo().final_amount"></b>
+                                    <b t-field="o.sudo().final_amount"></b><b> Rs.</b>
                                 </td>
                             </tr>
+
+                            
                             <!--                        <tr>-->
                             <!--                            <td></td>-->
                             <!--                        </tr>-->
@@ -412,15 +459,15 @@
                             <t t-foreach="o.line_ids" t-as="line_id">
                                 <tr>
                                     <td style="color : #007dfa ">
-                                        <b t-field="line_id.name"></b>
+                                        <b t-field="line_id.name"></b><b> Rs.</b>
                                     </td>
 <!--                                    <td></td>-->
                                     <td>
-                                        <b t-field="line_id.discount_amount"></b>
+                                        <b t-field="line_id.discount_amount"></b><b> Rs.</b>
                                     </td>
 <!--                                    <td></td>-->
                                     <td>
-                                        <b t-field="line_id.amount"></b>
+                                        <b t-field="line_id.amount"></b><b> Rs.</b>
                                     </td>
                                 </tr>
 
@@ -432,7 +479,7 @@
                             </tr>
                             <tr>
                                 <td style="color : #007dfa ">
-                                    Payable by:
+                                    Payable Amount:
                                 </td>
 <!--                                <td></td>-->
                                 <td style="color : #007dfa ">
@@ -440,21 +487,64 @@
                                 </td>
 <!--                                <td></td>-->
                                 <td style="color : #007dfa ">
-                                    <b t-field="o.sudo().final_amount"></b>
+                                    <b t-field="o.sudo().final_amount"></b><b> Rs.</b>
+                                </td>
+                            </tr>
+
+                              <tr>
+                                <td style="color : #007dfa ">
+                                    Paid Amount:
+                                </td>
+                                <!--                            <td></td>-->
+                                <td style="color : #007dfa ">
+                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                </td>
+                                <!--                            <td></td>-->
+                                <td style="color : #007dfa ">
+                                    <b t-field="o.sudo().paid_amount" ></b>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <td style="color : #007dfa ">
+                                    Due Amount:
+                                </td>
+                                <!--                            <td></td>-->
+                                <td style="color : #007dfa ">
+                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                </td>
+                                <!--                            <td></td>-->
+                                <td style="color : #007dfa ">
+                                    <b t-field="o.sudo().due_amount"></b>
+                                </td>
+                            </tr>
+
+                               <tr>
+                                <td style="color : #007dfa ">
+                                    Payable Amount:
+                                </td>
+<!--                                <td></td>-->
+                                <td style="color : #007dfa ">
+                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                </td>
+<!--                                <td></td>-->
+                                <td style="color : #007dfa ">
+                                    <b t-field="o.sudo().final_amount"></b><b> Rs.</b>
                                 </td>
                             </tr>
 
                             <tr style="  border-bottom: 1pt dashed gray;">
                                 <td style="color : black ">
-                                    Payable by:
+                                    Payable by: <span t-esc="user.name"></span>
                                 </td>
+                                 
 <!--                                <td></td>-->
                                 <td style="color : black ">
                                     <span t-field="o.sudo().validity_date" t-options='{"widget": "date"}'/>
                                 </td>
 <!--                                <td></td>-->
                                 <td style="color : black ">
-                                    <b t-field="o.sudo().final_amount"></b>
+                                    <b t-field="o.sudo().final_amount"></b><b> Rs.</b>
                                 </td>
 
                             </tr>
