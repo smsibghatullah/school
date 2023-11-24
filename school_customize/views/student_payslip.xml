@@ -126,7 +126,7 @@
                             <tr>
                                 <td>
                                     <b>Father Name:</b>
-                                    <span t-field="o.sudo().student_id.parent_id.name"></span>
+                                    <span t-field="o.sudo().student_id.parent_id[0].name"></span>
                                 </td>
                                 <td></td>
                                 <td>
@@ -437,10 +437,12 @@
                             </tr>
 
                             <tr>
-                                <td>
+                                        <td>
                                     <b>Father Name:</b>
-                                    <span t-field="o.sudo().student_id.parent_id.name"></span>
+                                    <span t-field="o.sudo().student_id.parent_id[0].name"></span>
                                 </td>
+
+
                                 <td></td>
                                 <td>
                                     <b>GRN:</b>
