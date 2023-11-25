@@ -540,7 +540,7 @@ class AccountPaymentRegister(models.TransientModel):
                 fees_payment = (invoice.student_payslip_id.paid_amount +
                                 rec.amount)
                 vals.update({
-                    "state": "paid",
+                    "state": "pending",
                     "payment_date": curr_date,
                     "move_id": invoice.id or False,
                     "paid_amount": fees_payment,

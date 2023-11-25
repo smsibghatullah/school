@@ -132,11 +132,8 @@ class StudentPayslip(models.Model):
 
     def payslip_confirm(self):
         """Method to confirm payslip"""
-        print("payslip working =======================================>")
         records = self.env['student.student'].search([('id', '=', self.student_id.id)]).fees_heads_structure_line
-        print(self.student_id.id,"==========;;;;;;;;;;;;;;======")
         for record in records:
-            print(record.product_id.id,"lllllllllllllllllllllllllllllllll")
             self.payslip_structure_line = [(0, 0, {
                     'product_id': record.product_id.id,
                     'name': record.name,
@@ -190,11 +187,9 @@ class StudentPayslip(models.Model):
             # rec.write({"line_ids": lines})
 
             lines = []
-            print('endddddddddddddddddddddddddddd')
             product_partial_payment = self.env['product.product'].search([('default_code','=','PartialPayment')])
             for old_payslip in old_payslip_partial_paid:
                 # for line in old_payslip.line_ids:
-                print(product_partial_payment.id,"kkkkkkkkkkkkkkkkkkkkkkk")
                 line_vals = {"slip_id": rec.id,
                                  "product_id": product_partial_payment.id,
                                  "name": old_payslip.number,
