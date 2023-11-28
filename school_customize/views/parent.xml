@@ -43,6 +43,7 @@
                    <field name="name" filter_domain="['|','|',('name','ilike',self),('ref','=',self),('email','ilike',self)]"/>
                    <field name="phone" filter_domain="[('phone','ilike',self)]"/>
                     <field name="nic" filter_domain="[('nic','ilike',self)]"/>
+                    <field name="email" filter_domain="[('email','ilike',self)]"/>
                     <separator/>
                    <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
                </search>

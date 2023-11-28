@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
+ 
+
     <!-- Form View Of Student Reminder -->
     <record id="view_student_reminder_form_2" model="ir.ui.view">
         <field name="name">student.reminder.form</field>

@@ -225,4 +225,40 @@
 <menuitem id="school_attendance.menu_attendance" name="Attendance" parent="school.menu_ems" sequence="5" groups="school.group_school_administration,school.group_school_teacher,school.group_school_student,school.group_school_parent"/>
 <menuitem id="school_fees.menu_fees" name="Fees" parent="school.menu_ems" groups="school.group_school_administration,school.group_school_student,school.group_school_parent" sequence="11"/>
 
+
+    <!-- Search View 1 Of Student's Profiles -->
+    <record id="school.view_student_student_search_1" model="ir.ui.view">
+        <field name="name">student.student.search.1</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <search string="Student Information">
+                <group col="10" colspan="4">
+                    <field name="pid" />
+                    <field name="student_name" invisible="1" />
+                    <field name="year" />
+                    <field name="gender" />
+                    <field name="school_id" placeholder="School"/>
+                    <field name="phone" />
+                    <field name="roll_no" />
+                </group>
+                <newline />
+                <group expand="0" string="Group By..." colspan="12" col="10">
+                    <filter name="class" string="Class" help="By Class" context="{'group_by':'standard_id'}" />
+                    <filter name="gender" string="Gender" help="By Gender" context="{'group_by':'gender'}" />
+                    <filter name="name" string="Name" help="By Class" context="{'group_by':'student_name'}" />
+                    <filter name="school" string="School" help="By School" context="{'group_by':'school_id'}" />
+                    <filter name="state" string="State" help="By State" context="{'group_by':'state'}"/>
+                    <filter name="phone" string="Phone Number" help="By Phone Number" context="{'group_by':'phone'}" />
+                </group>
+                <separator/>
+                <filter name="alumni" string="Alumni" domain="[('state','=', 'alumni')]" help="Admission In Confirm State"/>
+                <filter name="terminate" string="Terminated" domain="[('state','=', 'terminate')]" help="Admission In Pending State"/>
+                <filter name="done" string="Done" domain="[('state','=', 'done')]" help="Admission In Done State"/>
+                <filter name="english" string="English Medium" domain="[('medium_id.name','ilike', 'English')]" help="Admission In English Medium"/>
+                <filter name="french" string="French Medium" domain="[('medium_id.name','ilike', 'French')]" help="Admission In French Medium"/>
+                <filter name="urdu" string="Urdu Medium" domain="[('medium_id.name','ilike', 'Urdu')]" help="Admission In Urdu Medium"/>
+                <filter name="phone" string="Phone Number" domain="[('phone','ilike', '8888')]" help="Admission In phone Medium"/>
+            </search>
+        </field>
+    </record>
 </odoo>

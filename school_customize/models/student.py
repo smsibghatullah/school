@@ -7,7 +7,8 @@ from odoo.exceptions import ValidationError
 
 class StudentCustomize(models.Model):
     _inherit = 'student.student'
-
+     
+    phone = fields.Char(string='phone')
     joining_date = fields.Date(string='Joining Date')
     category_id = fields.Many2one('school.customize.category', string='Category')
     section_id = fields.Many2one('school.customize.section', string='Section')
