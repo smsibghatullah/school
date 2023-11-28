@@ -126,7 +126,9 @@
                             <tr>
                                 <td>
                                     <b>Father Name:</b>
-                                    <span t-field="o.sudo().student_id.parent_id[0].name"></span>
+                                       <t t-if="o.sudo().student_id.parent_id">
+                                     <span t-field="o.sudo().student_id.parent_id[0].name"/>
+                                     </t>
                                 </td>
                                 <td></td>
                                 <td>
@@ -439,7 +441,10 @@
                             <tr>
                                         <td>
                                     <b>Father Name:</b>
-                                    <span t-field="o.sudo().student_id.parent_id[0].name"></span>
+                                     <t t-if="o.sudo().student_id.parent_id">
+                                     <span t-field="o.sudo().student_id.parent_id[0].name"/>
+                                     </t>
+
                                 </td>
 
 
