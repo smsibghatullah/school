@@ -40,8 +40,8 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td style="font-size:20px ; font-weight: bolder ; style=text-align: right">
-                                        AL HAMD SCHOOL
+                                    <td style="font-size:20px ; font-weight: bolder ; style=text-align: right" >
+                                    <div t-field="company.name"/>
                                     </td>
 
                                 </tr>
@@ -148,7 +148,7 @@
                             <t t-foreach="o.line_ids" t-as="line_id">
                                 <tr>
                                     <td style="color : #5ac049 ">
-                                        <b t-field="line_id.name"></b><b> Rs.</b>
+                                        <b t-field="line_id.name"></b>
                                     </td>
                                     <!--                                <td></td>-->
                                     <td>
@@ -171,7 +171,7 @@
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #5ac049 ">
-                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                    
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #5ac049 ">
@@ -185,7 +185,7 @@
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #5ac049 ">
-                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                    
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #5ac049 ">
@@ -199,7 +199,7 @@
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #5ac049 ">
-                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                    
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #5ac049 ">
@@ -213,7 +213,7 @@
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #5ac049 ">
-                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                    
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #5ac049 ">
@@ -228,7 +228,7 @@
                                 
                                 <!--                            <td></td>-->
                                 <td style="color : black ">
-                                    <span t-field="o.sudo().validity_date" t-options='{"widget": "date"}'/>
+                                    <!-- <span t-field="o.sudo().validity_date" t-options='{"widget": "date"}'/> -->
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : black ">
@@ -365,7 +365,9 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td style="font-size:20px ; font-weight: bolder;text-align:center">AL HAMD SCHOOL</td>
+                                    <td style="font-size:20px ; font-weight: bolder;text-align:center" >
+                                    <div t-field="company.name"/>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -466,7 +468,7 @@
                             <t t-foreach="o.line_ids" t-as="line_id">
                                 <tr>
                                     <td style="color : #007dfa ">
-                                        <b t-field="line_id.name"></b><b> Rs.</b>
+                                        <b t-field="line_id.name"></b>
                                     </td>
 <!--                                    <td></td>-->
                                     <td>
@@ -490,7 +492,7 @@
                                 </td>
 <!--                                <td></td>-->
                                 <td style="color : #007dfa ">
-                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                    
                                 </td>
 <!--                                <td></td>-->
                                 <td style="color : #007dfa ">
@@ -504,7 +506,7 @@
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #007dfa ">
-                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                    
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #007dfa ">
@@ -518,7 +520,7 @@
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #007dfa ">
-                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                    
                                 </td>
                                 <!--                            <td></td>-->
                                 <td style="color : #007dfa ">
@@ -532,7 +534,7 @@
                                 </td>
 <!--                                <td></td>-->
                                 <td style="color : #007dfa ">
-                                    <span t-field="o.sudo().due_date" t-options='{"widget": "date"}'/>
+                                    
                                 </td>
 <!--                                <td></td>-->
                                 <td style="color : #007dfa ">
@@ -547,7 +549,7 @@
                                  
 <!--                                <td></td>-->
                                 <td style="color : black ">
-                                    <span t-field="o.sudo().validity_date" t-options='{"widget": "date"}'/>
+                                    <!-- <span t-field="o.sudo().invoice_date" t-options='{"widget": "date"}'/> -->
                                 </td>
 <!--                                <td></td>-->
                                 <td style="color : black ">
