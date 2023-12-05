@@ -262,6 +262,18 @@ class StudentPayslip(models.Model):
                             'subject': subject,
                             'body_html': body,
                             }, force_send=True)
+                    
+# class PaymentFee(models.Model):
+#     _inherit = 'student.payslip'
+
+# # student_id = fields.Many2one('student', string='Student')
+                        
+#     def search(self, args, offset=0, limit=None, order=None, count=False):
+#                 if self._context.get('default_filter_parent_nic'):
+#                     parent_nic = '123456'  # Replace with the NIC number you're searching for
+#                     student_ids = self.env['student'].search([('parent_id.nic', '=', parent_nic)])
+#                     args += [('student_id', 'in', student_ids.ids)]
+#                     return super(PaymentFee, self).search(args, offset=offset, limit=limit, order=order, count=count)
 
 
 

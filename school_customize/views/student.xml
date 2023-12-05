@@ -261,4 +261,16 @@
             </search>
         </field>
     </record>
+
+    <!-- <record id="view_payment_fee_search_filter" model="ir.ui.view">
+    <field name="name">payment.fee.search.filter</field>
+    <field name="model">student.payslip</field>
+    <field name="arch" type="xml">
+        <search>
+            <filter string="Search by Parent NIC" name="filter_parent_nic"
+                    context="{'default_filter_parent_nic': True}"/>
+        </search>
+    </field>
+</record> -->
+
 </odoo>

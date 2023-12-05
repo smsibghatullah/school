@@ -264,9 +264,10 @@
                     <filter name="confirm" string="Confirm" domain="[('state','=','confirm')]" help="Confirm Slip"/>
                     <separator orientation="vertical"/>
                     <field name="name"/>
-                    <field name="student_id"/>
+                    <field name="student_id.parent_id"/>
                     <field name="number"/>
                     <field name="date"/>
+                    <field name="standard_id"/>
                 </group>
                 <newline/>
                 <group expand="0" string="Group By..." colspan="12" col="10">
@@ -279,6 +280,11 @@
             </search>
         </field>
     </record>
+
+
+
+
+
     <!-- Form View Of Student Fees Register Information -->
     <record id="view_student_fees_register_form" model="ir.ui.view">
         <field name="name">student.fees.register.form</field>

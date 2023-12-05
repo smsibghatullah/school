@@ -26,7 +26,7 @@
                     <div class="float-child" style="width: 45%;float: left;margin: 5px;">
                         <div style="background-color:#5ac049;height:20px;width:100%;"></div>
 
-                        <div class="row">
+                        <div class="row" style="margin-left:145px">
                             <table>
 
                                 <tr>
@@ -40,7 +40,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td style="font-size:20px ; font-weight: bolder ; style=text-align: right" >
+                                    <td style="font-size:20px ; font-weight: bolder ;" >
                                     <div t-field="company.name"/>
                                     </td>
 
@@ -221,20 +221,17 @@
                                 </td>
                             </tr>
 
-                            <tr style="  border-bottom: 1pt dashed gray;">
+                            <!-- <tr style="  border-bottom: 1pt dashed gray;">
                                 <td style="color : black ">
                                     Payable by:<span t-esc="user.name"></span>
                                 </td>
                                 
-                                <!--                            <td></td>-->
                                 <td style="color : black ">
-                                    <!-- <span t-field="o.sudo().validity_date" t-options='{"widget": "date"}'/> -->
                                 </td>
-                                <!--                            <td></td>-->
                                 <td style="color : black ">
                                     <b t-field="o.sudo().final_amount"></b><b> Rs.</b>
                                 </td>
-                            </tr>
+                            </tr> -->
 
                             
                             <!--                        <tr>-->
@@ -272,13 +269,20 @@
                         <table style="width:100%;">
 
                             <tr>
-                                <td style="padding-bottom: 25%;"></td>
+                                <td style="padding-bottom: 8%;"></td>
                             </tr>
 
                             <tr>
                                 <td style="font-size: small; color: black;  text-align: left; vertical-align: top;">
                                     Accountant Sign
                                 </td>
+                                <td  style="text-align:center">
+                                <t t-if="o.sudo().state == 'paid'">
+                                    <img width="50%" height="110px" src="https://cdn.pixabay.com/photo/2020/04/10/13/23/paid-5025785_960_720.png"/>
+                                    <p t-esc="user.name"/>
+                                </t>
+                               </td>
+
                                 <td style="font-size: small;  color: black; text-align: right; vertical-align: top;">
                                     Authorized Signature
                                 </td>
@@ -352,7 +356,7 @@
 
                     <div class="float-child" style="width: 45%;float: left;margin: 5px;">
                         <div style="background-color:#007dfa;height:20px;width:100%;"></div>
-                        <div class="row">
+                        <div class="row" style="margin-left:145px">
                             <table>
                                 <tr>
                                     <td>
@@ -542,21 +546,7 @@
                                 </td>
                             </tr>
 
-                            <tr style="  border-bottom: 1pt dashed gray;">
-                                <td style="color : black ">
-                                    Payable by: <span t-esc="user.name"></span>
-                                </td>
-                                 
-<!--                                <td></td>-->
-                                <td style="color : black ">
-                                    <!-- <span t-field="o.sudo().invoice_date" t-options='{"widget": "date"}'/> -->
-                                </td>
-<!--                                <td></td>-->
-                                <td style="color : black ">
-                                    <b t-field="o.sudo().final_amount"></b><b> Rs.</b>
-                                </td>
-
-                            </tr>
+                        
 <!--                            <tr>-->
 <!--                                <td></td>-->
 <!--                            </tr>-->
@@ -593,13 +583,20 @@
                         </table>
                         <table style="width:100%;">
                             <tr>
-                                <td style="padding-bottom: 25%;"></td>
+                                <td style="padding-bottom: 8%;"></td>
                             </tr>
 
                             <tr>
                                 <td style="font-size: small; color: black;  text-align: left; vertical-align: top;">
                                     Accountant Sign
                                 </td>
+                               <td  style="text-align:center">
+                                <t t-if="o.sudo().state == 'paid'">
+                                    <img width="50%" height="110px" src="https://cdn.pixabay.com/photo/2020/04/10/13/23/paid-5025785_960_720.png"/>
+                                    <p t-esc="user.name"/>
+                                </t>
+                               </td>
+
                                 <td style="font-size: small;  color: black; text-align: right; vertical-align: top;">
                                     Authorized Signature
                                 </td>
