@@ -24,7 +24,7 @@
                 </head>
                 <div class="float-container" style="width:100% ;     display: flex ; justify-content: space-between;">
                     <div class="float-child" style="width: 45%;float: left;margin: 5px;">
-                        <div style="background-color:#5ac049;height:20px;width:100%;"></div>
+                        <div style="background-color:#5ac049;height:15px;width:100%;"></div>
 
                         <div class="row" style="margin-left:145px">
                             <table>
@@ -207,19 +207,6 @@
                                 </td>
                             </tr>
 
-                                                        <tr>
-                                <td style="color : #5ac049 ">
-                                    Payable Amount:
-                                </td>
-                                <!--                            <td></td>-->
-                                <td style="color : #5ac049 ">
-                                    
-                                </td>
-                                <!--                            <td></td>-->
-                                <td style="color : #5ac049 ">
-                                    <b t-field="o.sudo().final_amount" ></b> <b> Rs.</b>
-                                </td>
-                            </tr>
 
                             <!-- <tr style="  border-bottom: 1pt dashed gray;">
                                 <td style="color : black ">
@@ -241,7 +228,7 @@
                             <!--                            <td></td>-->
                             <!--                        </tr>-->
                             <tr>
-                                <td style="padding-bottom: 3%;"></td>
+                                <td style="padding-bottom: 1%;"></td>
                             </tr>
                             <tr style="color:gray; font-size: small">
                                 <td colspan="3">Fee is payable in advance every month</td>
@@ -278,7 +265,7 @@
                                 </td>
                                 <td  style="text-align:center">
                                 <t t-if="o.sudo().state == 'paid'">
-                                    <img width="50%" height="110px" src="https://cdn.pixabay.com/photo/2020/04/10/13/23/paid-5025785_960_720.png"/>
+                                    <img width="150px" height="110px" src="https://cdn.pixabay.com/photo/2020/04/10/13/23/paid-5025785_960_720.png"/>
                                     <p t-esc="user.name"/>
                                 </t>
                                </td>
@@ -348,14 +335,14 @@
                         </table>
 
 
-                        <div style="background-color:#5ac049;height:20px;width:100%;"></div>
+                        <div style="background-color:#5ac049;height:15px;width:100%;"></div>
                         <!--                    <div id="bottom-div"></div>&ndash;&gt;-->
 
 
                     </div>
 
                     <div class="float-child" style="width: 45%;float: left;margin: 5px;">
-                        <div style="background-color:#007dfa;height:20px;width:100%;"></div>
+                        <div style="background-color:#007dfa;height:15px;width:100%;"></div>
                         <div class="row" style="margin-left:145px">
                             <table>
                                 <tr>
@@ -532,19 +519,7 @@
                                 </td>
                             </tr>
 
-                               <tr>
-                                <td style="color : #007dfa ">
-                                    Payable Amount:
-                                </td>
-<!--                                <td></td>-->
-                                <td style="color : #007dfa ">
-                                    
-                                </td>
-<!--                                <td></td>-->
-                                <td style="color : #007dfa ">
-                                    <b t-field="o.sudo().final_amount"></b><b> Rs.</b>
-                                </td>
-                            </tr>
+                               
 
                         
 <!--                            <tr>-->
@@ -557,7 +532,7 @@
 <!--                                <td></td>-->
 <!--                            </tr>-->
                             <tr>
-                                <td style="padding-bottom: 3%;"></td>
+                                <td style="padding-bottom: 1%;"></td>
                             </tr>
                             <tr style="color:gray; font-size: small">
                                 <td colspan="3">Fee is payable in advance every month</td>
@@ -592,7 +567,7 @@
                                 </td>
                                <td  style="text-align:center">
                                 <t t-if="o.sudo().state == 'paid'">
-                                    <img width="50%" height="110px" src="https://cdn.pixabay.com/photo/2020/04/10/13/23/paid-5025785_960_720.png"/>
+                                    <img width="150px" height="110px" src="https://cdn.pixabay.com/photo/2020/04/10/13/23/paid-5025785_960_720.png"/>
                                     <p t-esc="user.name"/>
                                 </t>
                                </td>
@@ -660,7 +635,7 @@
 <!--                            </tr>-->
 
                         </table>
-                        <div style="background-color:#007dfa;height:20px;width:100%;"></div>
+                        <div style="background-color:#007dfa;height:15px;width:100%;"></div>
                     </div>
                 </div>
             </html>
