@@ -1,6 +1,7 @@
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from datetime import datetime, timedelta
 
 
 class StudentFeesRegister(models.Model):
@@ -8,7 +9,7 @@ class StudentFeesRegister(models.Model):
 
     @api.onchange("fees_structure")
     def on_change_fees_structure(self):
-        self.standard_id = self.fees_structure.class_id.id;
+        self.standard_id = self.fees_structure.class_id.id
 
     # def _get_default_journal(self):
     #     return self.env['account.journal'].search(
@@ -70,7 +71,19 @@ class StudentFeesRegister(models.Model):
             rec.write({"total_amount": amount, "state": "confirm"})
 
 
+    # def _auto_confirm_fees_register(self):
+    #     # Add logic to find and confirm fees registers for the current month
+    #     today = fields.Date.today()
+    #     start_of_month = today.replace(day=1)
+    #     end_of_month = (start_of_month + timedelta(days=32)).replace(day=1) - timedelta(days=1)
 
+    #     fees_registers_to_confirm = self.search([
+    #         ('date', '>=', start_of_month),
+    #         ('date', '<=', end_of_month),
+    #         ('state', '=', 'draft')
+    #     ])
+
+    #     fees_registers_to_confirm.fees_register_confirm()
 
 class StudentFeesStructure(models.Model):
     _inherit = "student.fees.structure"

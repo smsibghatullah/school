@@ -264,7 +264,7 @@
                     <filter name="confirm" string="Confirm" domain="[('state','=','confirm')]" help="Confirm Slip"/>
                     <separator orientation="vertical"/>
                     <field name="name"/>
-                    <field name="student_id.parent_id"/>
+                    <field name="student_id"/>
                     <field name="number"/>
                     <field name="date"/>
                     <field name="standard_id"/>

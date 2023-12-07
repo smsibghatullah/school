@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
+# __init__.py
 
-# from . import models
 from . import attachment
 from . import board
 from . import category
@@ -12,3 +11,4 @@ from . import school_fees
 from . import notices
 from . import standard_standard
 from . import attendance
+
