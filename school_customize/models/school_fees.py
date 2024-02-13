@@ -91,3 +91,27 @@ class StudentFeesStructure(models.Model):
     class_id = fields.Many2one("standard.standard")
 
 
+class StudentFeesStructureLineInherit(models.Model):
+    _inherit = "student.fees.structure.line"
+
+    @api.model
+    def create(self, vals):
+        account = self.env['account.account'].search([('code', '=', '1112001')], limit=1)
+        if account:
+            vals['account_id'] = account.id
+        else:
+            pass
+
+        product_vals = {
+            'name': vals.get('name'),
+            'list_price': vals.get('amount', 0.0),
+            'type': 'service'
+        }
+
+        product = self.env['product.product'].create(product_vals)
+
+        vals['product_id'] = product.id
+
+        return super(StudentFeesStructureLineInherit, self).create(vals)
+
+

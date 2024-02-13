@@ -83,6 +83,13 @@ class AccessToken(http.Controller):
             return invalid_response("wrong database name", error, 403)
 
         uid = request.session.uid
+        user = request.env['res.users'].sudo().browse(uid)
+
+        # # Check if the user belongs to a specific group
+        # # Replace 'external_id_of_the_group' with the actual external ID of the group you're checking
+        is_in_teacher = user.has_group('school.group_school_teacher')
+        is_in_parent = user.has_group('school.group_school_parent')
+
         # odoo login failed:
         if not uid:
             info = "authentication failed"
@@ -100,6 +107,8 @@ class AccessToken(http.Controller):
                     # "company_ids": request.env.user.company_ids.ids if uid else None,
                     "partner_id": request.env.user.partner_id.id,
                     "access_token": access_token,
+                    "is_in_teacher":is_in_teacher,
+                    "is_in_parent":is_in_parent,
                     # "company_name": request.env.user.company_name,
                     # "currency": request.env.user.currency_id.name,
                     # "company_name": request.env.user.company_name,

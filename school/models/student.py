@@ -113,7 +113,7 @@ class StudentStudent(models.Model):
     middle = fields.Char('Middle Name', required=True,
         states={'done': [('readonly', True)]},
         help='Enter student middle name')
-    last = fields.Char('Surname', required=True,
+    last = fields.Char('Surname', 
         states={'done': [('readonly', True)]}, help='Enter student last name')
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')],
         'Gender', states={'done': [('readonly', True)]},
