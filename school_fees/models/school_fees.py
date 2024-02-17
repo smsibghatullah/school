@@ -98,7 +98,7 @@ class StudentPayslipLine(models.Model):
     name = fields.Char("Name", required=True, help="Payslip")
     code = fields.Char("Code", required=True, help="Payslip code")
     type = fields.Selection([("month", "Monthly"), ("year", "Yearly"),
-        ("range", "Range")], "Duration", required=True,
+        ("range", "Range"),("once","Once")], "Duration", required=True,
         help="Select payslip type")
     amount = fields.Float("Amount", digits=(16, 2), help="Fee amount")
     line_ids = fields.One2many("student.payslip.line.line",
@@ -134,7 +134,7 @@ class StudentFeesStructureLine(models.Model):
     name = fields.Char("Name", required=True, help="Enter fee structure name")
     code = fields.Char("Code", required=True, help="Fee structure code")
     type = fields.Selection([("month", "Monthly"), ("year", "Yearly"),
-        ("range", "Range")], "Duration", required=True,
+        ("range", "Range"),("once","Once")], "Duration", required=True,
         help="Fee structure type")
     product_id = fields.Many2one("product.product", "Product", required=True)
     amount = fields.Float("Amount", digits=(16, 2), help="Fee amount")
