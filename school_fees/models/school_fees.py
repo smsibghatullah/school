@@ -2,6 +2,8 @@
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class StudentFeesRegister(models.Model):
@@ -98,7 +100,7 @@ class StudentPayslipLine(models.Model):
     name = fields.Char("Name", required=True, help="Payslip")
     code = fields.Char("Code", required=True, help="Payslip code")
     type = fields.Selection([("month", "Monthly"), ("year", "Yearly"),
-        ("range", "Range")], "Duration", required=True,
+        ("range", "Range"),("once","Once")], "Duration", required=True,
         help="Select payslip type")
     amount = fields.Float("Amount", digits=(16, 2), help="Fee amount")
     line_ids = fields.One2many("student.payslip.line.line",
@@ -134,7 +136,7 @@ class StudentFeesStructureLine(models.Model):
     name = fields.Char("Name", required=True, help="Enter fee structure name")
     code = fields.Char("Code", required=True, help="Fee structure code")
     type = fields.Selection([("month", "Monthly"), ("year", "Yearly"),
-        ("range", "Range")], "Duration", required=True,
+        ("range", "Range"),("once","Once")], "Duration", required=True,
         help="Fee structure type")
     product_id = fields.Many2one("product.product", "Product", required=True)
     amount = fields.Float("Amount", digits=(16, 2), help="Fee amount")
@@ -276,6 +278,8 @@ class StudentPayslip(models.Model):
         return super(StudentPayslip, self).create(vals)
 
     def write(self, vals):
+        print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+        _logger.info(vals)
         """Inherited write method to update values from student model"""
         if vals.get("student_id"):
             self._update_student_vals(vals)
@@ -290,6 +294,7 @@ class StudentPayslip(models.Model):
         self.state = "paid"
 
     def payslip_confirm(self):
+        print('cccccccccccccccccccccccccccccccccccccccccccccccccccc')
         """Method to confirm payslip"""
         for rec in self:
             if not rec.journal_id:
@@ -298,6 +303,9 @@ class StudentPayslip(models.Model):
                 raise ValidationError(_("Kindly, Select Fees Structure!"))
             lines = []
             for data in rec.fees_structure_id.line_ids or []:
+                print(data)
+                print('fffffffffffffffffffffffffffffffffffffff')
+                print(data.product_id,'lllllllllllllllllllllllllllllllllllllllllllllllll')
                 line_vals = {"slip_id": rec.id,
                             "product_id": data.product_id.id,
                             "name": data.name,

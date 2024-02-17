@@ -97,21 +97,30 @@ class StudentFeesStructureLineInherit(models.Model):
     @api.model
     def create(self, vals):
         account = self.env['account.account'].search([('code', '=', '1112001')], limit=1)
+        product_partial_payment = self.env['product.product'].search([('default_code','=','PartialPayment')])
+
         if account:
             vals['account_id'] = account.id
-        else:
-            pass
+        
+        if not product_partial_payment:
+            product_vals = {
+                'name': 'PartialPayment',
+                'list_price': 0,
+                'default_code': 'PartialPayment',
+                'type': 'service'
+            }
+            product = self.env['product.product'].create(product_vals)
+        
 
         product_vals = {
-            'name': vals.get('name'),
-            'list_price': vals.get('amount', 0.0),
-            'type': 'service'
-        }
-
-        product = self.env['product.product'].create(product_vals)
+                'name': vals.get('name'),
+                'list_price': vals.get('amount', 0.0),
+                'default_code': vals.get('name'),
+                'type': 'service'
+            }
+        product = self.env['product.product'].create(product_vals)   
 
         vals['product_id'] = product.id
 
         return super(StudentFeesStructureLineInherit, self).create(vals)
-
 
